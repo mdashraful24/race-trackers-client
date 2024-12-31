@@ -91,11 +91,10 @@ const AddMarathons = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
             {/* Helmet */}
             <Helmet>
-                <title>Add New Marathon | CrowdCube</title>
+                <title>Add Marathons | RaceTrackers</title>
             </Helmet>
 
-            {/* <h2 className="text-3xl md:text-4xl text-purple-700 font-bold text-center mb-6 md:mb-10">Add New Marathon</h2> */}
-            <form onSubmit={handleSubmit} className="border px-6 py-4">
+            <form onSubmit={handleSubmit} className="border rounded-xl px-6 py-4">
                 {/* Marathon Title */}
                 <div className="form-group mb-4">
                     <label className="block mb-2">Marathon Title</label>
@@ -107,8 +106,7 @@ const AddMarathons = () => {
                         required
                     />
                 </div>
-
-                <div className="flex flex-col lg:flex-row justify-between items-center">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center">
                     {/* Start Registration Date */}
                     <div className="form-group mb-4">
                         <label className="block mb-2">Start Registration Date</label>

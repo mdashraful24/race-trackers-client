@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const MarathonPage = () => {
     const [marathons, setMarathons] = useState([]);
-    const [sortOrder, setSortOrder] = useState('desc'); // Default sorting order: 'desc' for newest first
+    const [sortOrder, setSortOrder] = useState('desc');
 
     useEffect(() => {
         const fetchMarathons = async () => {
@@ -23,7 +23,7 @@ const MarathonPage = () => {
     }, [sortOrder]);
 
     const handleSortChange = (e) => {
-        setSortOrder(e.target.value); // Update the sort order on change
+        setSortOrder(e.target.value);
     };
 
     return (
