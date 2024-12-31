@@ -37,7 +37,7 @@ const Footer = () => {
                     <a className="link link-hover text-base">Cookie policy</a>
                 </nav>
             </footer>
-            <p className="text-center py-5">&copy; {new Date().getFullYear()} RaceTrackers. All rights reserved.</p>
+            <p className="text-center pt-10 pb-5">&copy; {new Date().getFullYear()} RaceTrackers. All rights reserved.</p>
         </div>
     );
 };
