@@ -10,7 +10,6 @@ const Footer = () => {
                 </div>
                 <p className="lg:w-2/3 mx-auto text-center">RaceTrackers hosts exciting marathons, offering a well-organized race experience with top-notch support. Join us for a memorable journey, whether you're a seasoned runner or a first-timer!</p>
             </footer>
-
             <footer className="footer container mx-auto grid grid-cols-2 md:grid-cols-4 justify-items-center gap-8 px-8">
                 <nav>
                     <h6 className="text-lg uppercase font-bold">Club</h6>
