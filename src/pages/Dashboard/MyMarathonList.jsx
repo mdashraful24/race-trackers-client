@@ -6,7 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
     const [myCampaigns, setMyCampaigns] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
     const [currentCampaign, setCurrentCampaign] = useState(null); // To store the campaign being updated
     const [formData, setFormData] = useState({
@@ -122,9 +122,9 @@ const MyMarathonList = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
             <Helmet>
-                <title>My Campaigns | CrowdCube</title>
+                <title>My Marathon List | RaceTrackers</title>
             </Helmet>
 
             {myCampaigns.length > 0 ? (
@@ -139,7 +139,7 @@ const MyMarathonList = () => {
                                 <th className="p-4 text-center">Marathon Start</th>
                                 <th className="p-4 text-center">Location</th>
                                 <th className="p-4 text-center">Distance</th>
-                                <th className="p-4 text-center">Description</th>
+                                {/* <th className="p-4 text-center">Description</th> */}
                                 {/* <th className="p-4 text-center">Marathon Image</th> */}
                                 <th className="p-4 text-center">User Mail</th>
                                 {/* <th className="p-4 text-center">User Name</th> */}
@@ -156,7 +156,7 @@ const MyMarathonList = () => {
                                     <td className="p-4 text-center">{new Date(myCampaign.marathonStartDate).toLocaleDateString()}</td>
                                     <td className="p-4 text-center">{myCampaign.location}</td>
                                     <td className="p-4 text-center">{myCampaign.runningDistance}</td>
-                                    <td className="p-4 text-center">{myCampaign.description}</td>
+                                    {/* <td className="p-4 text-center">{myCampaign.description}</td> */}
                                     {/* <td className="p-4 text-center">{myCampaign.marathonImage}</td> */}
                                     <td className="p-4 text-center">{myCampaign.userEmail}</td>
                                     {/* <td className="p-4 text-center">{myCampaign.userName}</td> */}
@@ -188,12 +188,12 @@ const MyMarathonList = () => {
 
             {/* Modal for updating marathon */}
             {isModalOpen && (
-                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-                        <h2 className="text-xl font-bold mb-4">Update Campaign</h2>
+                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 px-2">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto md:overflow-y-auto lg:overflow-hidden">
+                        <h2 className="text-black text-xl font-bold mb-4">Update Campaign</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
-                                <label htmlFor="title" className="block text-sm font-medium">Title</label>
+                                <label htmlFor="title" className="block text-black text-sm font-medium mb-1">Title</label>
                                 <input
                                     type="text"
                                     id="title"
@@ -205,7 +205,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="startRegistrationDate" className="block text-sm font-medium">Start Registration</label>
+                                <label htmlFor="startRegistrationDate" className="block text-black text-sm font-medium mb-1">Start Registration</label>
                                 <input
                                     type="date"
                                     id="startRegistrationDate"
@@ -217,7 +217,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="endRegistrationDate" className="block text-sm font-medium">End Registration</label>
+                                <label htmlFor="endRegistrationDate" className="block text-black text-sm font-medium mb-1">End Registration</label>
                                 <input
                                     type="date"
                                     id="endRegistrationDate"
@@ -229,7 +229,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="marathonStartDate" className="block text-sm font-medium">Marathon Start Date</label>
+                                <label htmlFor="marathonStartDate" className="block text-black text-sm font-medium mb-1">Marathon Start Date</label>
                                 <input
                                     type="date"
                                     id="marathonStartDate"
@@ -241,7 +241,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="location" className="block text-sm font-medium">Location</label>
+                                <label htmlFor="location" className="block text-black text-sm font-medium mb-1">Location</label>
                                 <input
                                     type="text"
                                     id="location"
@@ -253,7 +253,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="runningDistance" className="block text-sm font-medium">Running Distance</label>
+                                <label htmlFor="runningDistance" className="block text-black text-sm font-medium mb-1">Running Distance</label>
                                 <input
                                     type="text"
                                     id="runningDistance"
@@ -265,7 +265,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="description" className="block text-sm font-medium">Description</label>
+                                <label htmlFor="description" className="block text-black text-sm font-medium mb-1">Description</label>
                                 <textarea
                                     id="description"
                                     name="description"
@@ -276,7 +276,7 @@ const MyMarathonList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="marathonImage" className="block text-sm font-medium">Marathon Image URL</label>
+                                <label htmlFor="marathonImage" className="block text-black text-sm font-medium mb-1">Marathon Image URL</label>
                                 <input
                                     type="text"
                                     id="marathonImage"
@@ -287,25 +287,26 @@ const MyMarathonList = () => {
                                     required
                                 />
                             </div>
-                            <div className="flex gap-3 justify-center">
+                            <div className="flex gap-3 justify-between">
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+                                >
+                                    Save Changes
+                                </button>
                                 <button
                                     type="button"
-                                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+                                    className="px-4 py-2 bg-red-200 hover:bg-red-500 text-black font-medium rounded-md"
                                     onClick={() => setIsModalOpen(false)}
                                 >
                                     Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="px-4 py-2 bg-blue-500 text-white rounded-md"
-                                >
-                                    Save Changes
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             )}
+
         </div>
     );
 };
