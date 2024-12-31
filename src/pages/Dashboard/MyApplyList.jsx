@@ -113,7 +113,7 @@ const MyApplyList = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
             {/* Helmet */}
             <Helmet>
-                <title>My Campaigns | CrowdCube</title>
+                <title>My Apply List | RaceTrackers</title>
             </Helmet>
 
             {/* Search Input */}
@@ -136,7 +136,7 @@ const MyApplyList = () => {
                                 <th className="p-4 text-center">First Name</th>
                                 <th className="p-4 text-center">Last Name</th>
                                 <th className="p-4 text-center">Title</th>
-                                <th className="p-4 text-center">Start Registration</th>
+                                <th className="p-4 text-center">Marathon Start</th>
                                 <th className="p-4 text-center">Number</th>
                                 <th className="p-4 text-center">Additional Info</th>
                                 <th className="p-4 text-center">Actions</th>
@@ -180,12 +180,12 @@ const MyApplyList = () => {
 
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-                        <h3 className="text-center text-xl font-bold mb-4">Update Registration</h3>
+                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 px-2">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto md:overflow-y-auto lg:overflow-hidden">
+                        <h3 className="text-center text-black text-xl font-bold mb-4">Update Registration</h3>
                         <form onSubmit={handleUpdateSubmit}>
                             <div className="mb-4">
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                                <label htmlFor="email" className="block text-black text-sm font-medium mb-1">Email</label>
                                 <input
                                     id="email"
                                     name="email"
@@ -196,7 +196,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="title" className="block text-sm font-medium text-gray-700">Marathon Title</label>
+                                <label htmlFor="title" className="block text-black text-sm font-medium mb-1">Marathon Title</label>
                                 <input
                                     id="title"
                                     name="title"
@@ -207,7 +207,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">Marathon Start Date</label>
+                                <label htmlFor="startDate" className="block text-black text-sm font-medium mb-1">Marathon Start Date</label>
                                 <input
                                     id="startDate"
                                     name="startDate"
@@ -218,7 +218,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
+                                <label htmlFor="firstName" className="block text-black text-sm font-medium mb-1">First Name</label>
                                 <input
                                     id="firstName"
                                     name="firstName"
@@ -229,7 +229,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last Name</label>
+                                <label htmlFor="lastName" className="block text-black text-sm font-medium mb-1">Last Name</label>
                                 <input
                                     id="lastName"
                                     name="lastName"
@@ -240,7 +240,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="number" className="block text-sm font-medium text-gray-700">Contact Number</label>
+                                <label htmlFor="number" className="block text-black text-sm font-medium mb-1">Contact Number</label>
                                 <input
                                     id="number"
                                     name="number"
@@ -251,7 +251,7 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700">Additional Info</label>
+                                <label htmlFor="additionalInfo" className="block text-black text-sm font-medium mb-1">Additional Info</label>
                                 <input
                                     id="additionalInfo"
                                     name="additionalInfo"
@@ -271,7 +271,7 @@ const MyApplyList = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowModal(false)}
-                                    className="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600"
+                                    className="px-4 py-2 bg-red-200 hover:bg-red-500 text-black font-medium rounded-md"
                                 >
                                     Close
                                 </button>
