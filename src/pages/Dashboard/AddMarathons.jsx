@@ -9,7 +9,7 @@ const AddMarathons = () => {
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
     const [location, setLocation] = useState("");
-    const [distance, setDistance] = useState("10k");
+    const [distance, setDistance] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [createdAt] = useState(new Date());

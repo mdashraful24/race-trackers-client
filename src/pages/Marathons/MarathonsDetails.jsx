@@ -1,8 +1,8 @@
 import { FaUsers } from "react-icons/fa";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const MarathonsDetails = () => {
-    const {_id,
+    const { _id,
         title,
         startRegistrationDate,
         endRegistrationDate,
@@ -14,7 +14,7 @@ const MarathonsDetails = () => {
         totalRegistrationCount,
     } = useLoaderData();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // Check if registration is open
     const isRegistrationOpen =
