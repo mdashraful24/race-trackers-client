@@ -118,5 +118,42 @@
         "marathonImage": "https://i.ibb.co.com/H2BnP7V/martins-zemlickis-NPFu4-Gf-FZ7-E-unsplash.jpg",
         "totalRegistrationCount": 350,
         "createdAt": "2015-12-31T16:53:39.461Z"
+    },
+    {
+        "title": "City Marathon 2015",
+        "startRegistrationDate": "2024-12-30T18:00:00.000Z",
+        "endRegistrationDate": "2025-01-30T18:00:00.000Z",
+        "marathonStartDate": "2025-02-02T18:00:00.000Z",
+        "location": "New York City, NY",
+        "runningDistance": "25k",
+        "description": "Join us for the annual City Marathon through the streets of New York. Experience the excitement of running in one of the world's most iconic cities.",
+        "marathonImage": "https://i.ibb.co/fDVzxnb/marathon-6660180-1280.jpg",
+        "createdAt": "2024-12-31T17:08:04.638Z",
+        "totalRegistrationCount": 1200
+    },
+    {
+        "title": "Golden Gate Marathon 2025",
+        "startRegistrationDate": "2025-01-01T18:00:00.000Z",
+        "endRegistrationDate": "2025-02-15T18:00:00.000Z",
+        "marathonStartDate": "2025-02-20T18:00:00.000Z",
+        "location": "San Francisco, CA",
+        "runningDistance": "30k",
+        "description": "Experience the breathtaking views of San Francisco as you run across the Golden Gate Bridge. A challenge for runners of all levels.",
+        "marathonImage": "https://i.ibb.co/9h3RVjy/golden-gate-marathon.jpg",
+        "createdAt": "2025-01-01T10:00:00.000Z",
+        "totalRegistrationCount": 850
+    },
+    {
+        "title": "Sunset Beach Run 2025",
+        "startRegistrationDate": "2025-01-15T18:00:00.000Z",
+        "endRegistrationDate": "2025-03-01T18:00:00.000Z",
+        "marathonStartDate": "2025-03-05T18:00:00.000Z",
+        "location": "Santa Monica, CA",
+        "runningDistance": "15k",
+        "description": "Run along the scenic Santa Monica beach at sunset. A perfect event for those who love coastal beauty and running.",
+        "marathonImage": "https://i.ibb.co/fHRvhqh/sunset-beach-marathon.jpg",
+        "createdAt": "2025-01-15T12:30:00.000Z",
+        "totalRegistrationCount": 600
     }
 ]
+

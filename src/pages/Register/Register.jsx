@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
@@ -65,11 +65,11 @@ const Register = () => {
     };
 
     return (
-        <div className="flex justify-center items-center my-12 px-5">
+        <div className="flex justify-center items-center my-20 px-5">
             {/* Helmet */}
-            {/* <Helmet>
-                <title>Register Now | Winter Clothing Donation</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Register Now | RaceTrackers</title>
+            </Helmet>
 
             {/* Register form */}
             <div className="card border w-full max-w-md shrink-0 py-8">

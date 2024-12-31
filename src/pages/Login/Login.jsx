@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 
@@ -56,15 +56,15 @@ const Login = () => {
     }
 
     return (
-        <div className='my-12 px-5'>
+        <div className='my-20 px-5'>
             {/* Helmet */}
-            {/* <Helmet>
-                <title>Login Now | Winter Clothing Donation</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Login Now | RaceTrackers</title>
+            </Helmet>
 
             {/* Login form */}
             <div className="flex justify-center items-center">
-                <div className="card bg-white rounded-xl border w-full max-w-md shrink-0 py-6 p-3">
+                <div className="card rounded-xl border w-full max-w-md shrink-0 py-6 p-3">
                     <h2 className='text-2xl font-semibold text-center'>Login Now</h2>
                     <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
@@ -104,7 +104,7 @@ const Login = () => {
                             }
                             <label className="label">
                                 <Link
-                                    to={`/auth/forgot-password?email=${document.querySelector("[name='email']")?.value || ""}`}
+                                    to="/login"
                                     className="label-text-alt text-sm link link-hover text-blue-600"
                                 >
                                     Forgot password?
