@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { IoLocationSharp } from 'react-icons/io5';
 
 const MarathonPage = () => {
     const [marathons, setMarathons] = useState([]);
@@ -32,8 +33,11 @@ const MarathonPage = () => {
                 <title>Marathons | CrowdCube</title>
             </Helmet>
 
+            <h2 className="text-2xl md:text-4xl font-bold text-center text-purple-800 mb-3">All Marathons Events</h2>
+            <div className="mb-8 md:mb-14 h-1 w-36 bg-[#591a6a] mx-auto"></div>
+
             {/* Sorting dropdown */}
-            <div className="mb-6 text-center">
+            <div className="mb-16 text-center">
                 <label htmlFor="sortOrder" className="mr-2 font-semibold">Sort by:</label>
                 <select
                     id="sortOrder"
@@ -54,15 +58,18 @@ const MarathonPage = () => {
                     marathons.map((marathon) => (
                         <div key={marathon._id} className="card card-compact shadow-xl transition-transform duration-500 hover:-translate-y-2 group">
                             <img src={marathon.marathonImage} alt={marathon.title} className="w-full md:h-[250px] lg:h-[300px] rounded-2xl p-2" />
-                            <div className="p-4">
+                            <div className="p-4 flex flex-col">
                                 <h3 className="text-xl font-semibold mb-2">{marathon.title}</h3>
-                                <p className="text-gray-600 mb-2">{marathon.location}</p>
-                                <p className="text-sm text-gray-500">
+                                <div className='flex items-center gap-1 mb-2'>
+                                    <span className='text-blue-600 text-lg'><IoLocationSharp /></span>
+                                    <p>{marathon.location}</p>
+                                </div>
+                                <p>
                                     Registration: {new Date(marathon.startRegistrationDate).toLocaleDateString()} to {new Date(marathon.endRegistrationDate).toLocaleDateString()}
                                 </p>
                                 <Link
                                     to={`/marathons/${marathon._id}`}
-                                    className="btn mt-3 shadow-md transition-colors duration-300 text-black group-hover:bg-green-600 group-hover:text-white"
+                                    className="btn mt-3 ml-auto shadow-md transition-colors duration-300 text-black group-hover:bg-purple-700 group-hover:text-white"
                                 >
                                     See Details
                                 </Link>
