@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2';
-import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const RegistrationForm = () => {
     const { user } = useContext(AuthContext);
     const { _id, title, marathonStartDate } = useLoaderData();
-    const [totalRegistrations, setTotalRegistrations] = useState(0); // State for total registrations
-    const navigate = useNavigate(); // Hook for navigation
+    const [totalRegistrations, setTotalRegistrations] = useState(0);
+    const navigate = useNavigate();
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -61,6 +61,7 @@ const RegistrationForm = () => {
 
     //     form.reset();
     // };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -113,11 +114,11 @@ const RegistrationForm = () => {
 
     return (
         <div className="px-3 mt-10 md:mt-14 mb-20">
-            <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
-                <Helmet>
-                    <title>|</title>
-                </Helmet>
+            <Helmet>
+                <title>Registration | RaceTrackers</title>
+            </Helmet>
 
+            <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
                 <h2 className="text-3xl md:text-3xl font-bold text-center mb-6 md:mb-10">Registration for "{title}"</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group mb-4">
@@ -191,7 +192,7 @@ const RegistrationForm = () => {
                         type="submit"
                         className="btn w-full bg-green-600 text-base text-white py-3 rounded-lg hover:bg-green-700 transition-all duration-500"
                     >
-                        Add
+                        Submit Now
                     </button>
                 </form>
             </div>
