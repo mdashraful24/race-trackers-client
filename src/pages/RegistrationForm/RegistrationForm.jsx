@@ -11,6 +11,56 @@ const RegistrationForm = () => {
     const [totalRegistrations, setTotalRegistrations] = useState(0); // State for total registrations
     const navigate = useNavigate(); // Hook for navigation
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     const form = e.target;
+    //     const firstName = form.firstName.value;
+    //     const lastName = form.lastName.value;
+    //     const number = form.number.value;
+    //     const additionalInfo = form.additionalInfo.value;
+
+    //     const newRegistration = {
+    //         firstName,
+    //         lastName,
+    //         title,
+    //         number,
+    //         additionalInfo,
+    //         userEmail: user?.email,
+    //     };
+
+    //     if (!firstName || !lastName || !title || !number || !additionalInfo) {
+    //         toast.error("All fields are required!");
+    //         return;
+    //     }
+
+    //     fetch("http://localhost:5000/registrations", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(newRegistration),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             if (data.insertedId) {
+    //                 // Update the total registration count in the state
+    //                 setTotalRegistrations(prevCount => prevCount + 1);
+
+    //                 Swal.fire({
+    //                     title: "Success!",
+    //                     text: "Registration added successfully",
+    //                     icon: "success",
+    //                     confirmButtonText: "Cool",
+    //                 }).then(() => {
+    //                     // Redirect to a specific page after success
+    //                     navigate("/dashboard/myApplyList");
+    //                 });
+    //             }
+    //         });
+
+    //     form.reset();
+    // };
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -27,6 +77,7 @@ const RegistrationForm = () => {
             number,
             additionalInfo,
             userEmail: user?.email,
+            marathonStartDate, // Include marathonStartDate
         };
 
         if (!firstName || !lastName || !title || !number || !additionalInfo) {
@@ -61,6 +112,7 @@ const RegistrationForm = () => {
 
         form.reset();
     };
+
 
     return (
         <div className="px-3 mt-10 md:mt-14 mb-20">

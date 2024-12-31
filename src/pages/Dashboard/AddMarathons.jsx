@@ -1,124 +1,177 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../providers/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const AddMarathons = () => {
-    const [title, setTitle] = useState("");
+    const { user } = useContext(AuthContext);
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
-    const [location, setLocation] = useState("");
-    const [distance, setDistance] = useState("");
-    const [description, setDescription] = useState("");
-    const [image, setImage] = useState(null);
-    const [createdAt] = useState(new Date());
-    const [totalRegistrationCount] = useState(0);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Validate form inputs
-        if (!title || !startRegistrationDate || !endRegistrationDate || !marathonStartDate || !location || !description || !image) {
-            toast.error("Please fill all fields.");
-            return;
-        }
+        const form = e.target;
+        const title = form.title.value;
+        const location = form.location.value;
+        const runningDistance = form.runningDistance.value;
+        const description = form.description.value;
+        const marathonImage = form.marathonImage.value;
+        const createdAt = new Date();
+        const totalRegistrations = 0;
 
-        const marathonData = {
+        const newMarathon = {
             title,
             startRegistrationDate,
             endRegistrationDate,
             marathonStartDate,
             location,
-            distance,
+            runningDistance,
             description,
-            image,
+            marathonImage,
             createdAt,
-            totalRegistrationCount,
+            totalRegistrations,
+            userEmail: user?.email,
+            userName: user?.displayName,
         };
 
-        // Save the marathon data to the database
-        try {
-            // Replace this with your database storage logic
-            // Example: await saveMarathonToDatabase(marathonData);
-            toast.success("Marathon created successfully!");
-        } catch (error) {
-            toast.error("Error creating marathon. Please try again.");
+        // Validation
+        if (!title || !startRegistrationDate || !endRegistrationDate || !marathonStartDate || !location || !runningDistance || !description || !marathonImage) {
+            toast.error("All fields are required!");
+            return;
         }
+
+        if (startRegistrationDate >= endRegistrationDate) {
+            toast.error("Start registration date must be before end registration date.");
+            return;
+        }
+
+        if (endRegistrationDate >= marathonStartDate) {
+            toast.error("End registration date must be before the marathon start date.");
+            return;
+        }
+
+        try {
+            new URL(marathonImage);
+        } catch {
+            toast.error("Invalid image URL!");
+            return;
+        }
+
+        fetch("http://localhost:5000/addMarathons", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newMarathon),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Marathon added successfully",
+                        icon: "success",
+                        confirmButtonText: "Cool",
+                    });
+                }
+            });
+
+        form.reset();
+        setStartRegistrationDate(null);
+        setEndRegistrationDate(null);
+        setMarathonStartDate(null);
     };
 
     return (
-        <div className="container mx-auto px-5 py-3 border rounded-lg">
-            <h2 className="text-3xl font-bold mb-4">Create a Marathon Event</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Marathon Title</label>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
+            {/* Helmet */}
+            <Helmet>
+                <title>Add New Marathon | CrowdCube</title>
+            </Helmet>
+
+            {/* <h2 className="text-3xl md:text-4xl text-purple-700 font-bold text-center mb-6 md:mb-10">Add New Marathon</h2> */}
+            <form onSubmit={handleSubmit} className="border px-6 py-4">
+                {/* Marathon Title */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Marathon Title</label>
                     <input
                         type="text"
-                        className="input input-bordered w-full"
-                        required
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Start Registration Date</label>
-                    <DatePicker
-                        selected={startRegistrationDate}
-                        onChange={(date) => setStartRegistrationDate(date)}
-                        dateFormat="yyyy-MM-dd"
-                        className="input input-bordered w-full"
-                        placeholderText="Select start registration date"
+                        name="title"
+                        className="w-full p-3 border rounded-lg"
+                        placeholder="Enter marathon title"
                         required
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">End Registration Date</label>
-                    <DatePicker
-                        selected={endRegistrationDate}
-                        onChange={(date) => setEndRegistrationDate(date)}
-                        dateFormat="yyyy-MM-dd"
-                        className="input input-bordered w-full"
-                        placeholderText="Select end registration date"
-                        required
-                    />
+                <div className="flex flex-col lg:flex-row justify-between items-center">
+                    {/* Start Registration Date */}
+                    <div className="form-group mb-4">
+                        <label className="block mb-2">Start Registration Date</label>
+                        <DatePicker
+                            selected={startRegistrationDate}
+                            onChange={(date) => setStartRegistrationDate(date)}
+                            className="w-full p-3 border rounded-lg"
+                            placeholderText="Start registration date"
+                            dateFormat="yyyy-MM-dd"
+                            required
+                        />
+                    </div>
+
+                    {/* End Registration Date */}
+                    <div className="form-group mb-4">
+                        <label className="block mb-2">End Registration Date</label>
+                        <DatePicker
+                            selected={endRegistrationDate}
+                            onChange={(date) => setEndRegistrationDate(date)}
+                            className="w-full p-3 border rounded-lg"
+                            placeholderText="End registration date"
+                            dateFormat="yyyy-MM-dd"
+                            required
+                        />
+                    </div>
+
+                    {/* Marathon Start Date */}
+                    <div className="form-group mb-4">
+                        <label className="block mb-2">Marathon Start Date</label>
+                        <DatePicker
+                            selected={marathonStartDate}
+                            onChange={(date) => setMarathonStartDate(date)}
+                            className="w-full p-3 border rounded-lg"
+                            placeholderText="Marathon start date"
+                            dateFormat="yyyy-MM-dd"
+                            required
+                        />
+                    </div>
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Marathon Start Date</label>
-                    <DatePicker
-                        selected={marathonStartDate}
-                        onChange={(date) => setMarathonStartDate(date)}
-                        dateFormat="yyyy-MM-dd"
-                        className="input input-bordered w-full"
-                        placeholderText="Select marathon start date"
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Location</label>
+                {/* Location */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Location</label>
                     <input
                         type="text"
-                        className="input input-bordered w-full"
+                        name="location"
+                        className="w-full p-3 border rounded-lg"
+                        placeholder="Enter location"
                         required
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Running Distance</label>
+                {/* Running Distance */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Running Distance</label>
                     <select
-                        className="input input-bordered w-full"
+                        name="runningDistance"
+                        className="w-full p-3 border rounded-lg"
                         defaultValue=""
                         required
-                        onChange={(e) => setDistance(e.target.value)}
                     >
                         <option value="" disabled>
-                            Select Distance
+                            Select a distance
                         </option>
                         <option value="25k">25k</option>
                         <option value="10k">10k</option>
@@ -126,33 +179,59 @@ const AddMarathons = () => {
                     </select>
                 </div>
 
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Description</label>
+                {/* Description */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Description</label>
                     <textarea
-                        className="textarea textarea-bordered w-full"
-                        required
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        name="description"
+                        className="w-full p-3 border rounded-lg"
+                        placeholder="Enter description"
                         rows="4"
+                        required
                     ></textarea>
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium">Marathon Image</label>
+                {/* Marathon Image */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Marathon Image (URL)</label>
                     <input
-                        type="file"
-                        className="file-input file-input-bordered w-full"
+                        type="text"
+                        name="marathonImage"
+                        className="w-full p-3 border rounded-lg"
+                        placeholder="Enter image URL"
                         required
-                        onChange={(e) => setImage(e.target.files[0])}
                     />
                 </div>
 
-                <div className="mb-4">
-                    <button type="submit" className="btn btn-primary w-full">
-                        Submit
-                    </button>
+                {/* User Email */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">User Email</label>
+                    <input
+                        type="email"
+                        value={user?.email || ""}
+                        readOnly
+                        className="w-full p-3 border rounded-lg cursor-not-allowed"
+                    />
                 </div>
+
+                {/* User Name */}
+                <div className="form-group mb-6">
+                    <label className="block mb-2">User Name</label>
+                    <input
+                        type="text"
+                        value={user?.displayName || ""}
+                        readOnly
+                        className="w-full p-3 border rounded-lg cursor-not-allowed"
+                    />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    className="btn w-full bg-green-600 text-base text-white py-3 rounded-lg hover:bg-green-700 transition-all duration-500"
+                >
+                    Submit Marathon
+                </button>
             </form>
         </div>
     );
