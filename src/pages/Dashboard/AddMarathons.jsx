@@ -238,3 +238,25 @@ const AddMarathons = () => {
 };
 
 export default AddMarathons;
+
+
+
+
+
+{/* <div className="mb-4">
+    <label className="block text-sm font-medium">Marathon Image</label>
+    Marathon Image
+    <div className="form-group mb-4">
+        <label className="block mb-2">Marathon Image (URL)</label>
+        <input
+            type="file"
+            className="file-input file-input-bordered w-full"
+            type="text"
+            name="marathonImage"
+            className="w-full p-3 border rounded-lg"
+            placeholder="Enter image URL"
+            required
+            onChange={(e) => setImage(e.target.files[0])}
+        />
+    </div>
+</div> */}

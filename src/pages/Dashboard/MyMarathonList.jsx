@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
@@ -67,9 +66,9 @@ const MyMarathonList = () => {
         setCurrentCampaign(campaign);
         setFormData({
             title: campaign.title,
-            startRegistrationDate: campaign.startRegistrationDate,
-            endRegistrationDate: campaign.endRegistrationDate,
-            marathonStartDate: campaign.marathonStartDate,
+            startRegistrationDate: formatDate(campaign.startRegistrationDate),
+            endRegistrationDate: formatDate(campaign.endRegistrationDate),
+            marathonStartDate: formatDate(campaign.marathonStartDate),
             location: campaign.location,
             runningDistance: campaign.runningDistance,
             description: campaign.description,
@@ -77,6 +76,16 @@ const MyMarathonList = () => {
         });
         setIsModalOpen(true);
     };
+
+    // Helper function to format date to yyyy-mm-dd
+    const formatDate = (date) => {
+        const d = new Date(date);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0'); // Ensure two-digit month
+        const day = String(d.getDate()).padStart(2, '0'); // Ensure two-digit day
+        return `${year}-${month}-${day}`;
+    };
+
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -180,7 +189,7 @@ const MyMarathonList = () => {
             {/* Modal for updating marathon */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-md w-1/2">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
                         <h2 className="text-xl font-bold mb-4">Update Campaign</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">

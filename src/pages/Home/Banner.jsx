@@ -1,5 +1,8 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import image1 from '../../../src/assets/slide1.jpg'
+import image2 from '../../../src/assets/slide2.jpg'
+import image3 from '../../../src/assets/slide3.jpg'
 
 const Banner = () => {
     return (
@@ -37,17 +40,17 @@ const Banner = () => {
                 {/* Slide 1 */}
                 <div className="relative">
                     <img
-                        src=""
+                        src={image1}
                         alt="Crowdfunding"
                         className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4 rounded-xl">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
-                                Empower Ideas, Transform Lives
+                                Essential Training Tips for Marathon Success
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-1/2 mx-auto">
-                                Start your crowdfunding journey to bring innovative projects to life and create meaningful impact. Together, we can fuel creativity, solve challenges, and turn ideas into lasting legacies that benefit communities around the world.
+                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                                Get ready for race day with our expert training advice. Build endurance and strength to ensure you perform your best.
                             </p>
                         </div>
                     </div>
@@ -55,17 +58,17 @@ const Banner = () => {
                 {/* Slide 2 */}
                 <div className="relative">
                     <img
-                        src=""
+                        src={image2}
                         alt="Community"
                         className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4 rounded-xl">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
-                                Join a Supportive Community
+                                Must-Have Tips for Race Day Preparation
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-1/2 mx-auto">
-                                Connect with like-minded individuals and back initiatives that align with your values. Together, we create a collective force for positive change, turning passion into action and transforming ideas into reality.
+                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                                Learn what to bring and how to prepare for a smooth race experience. From hydration to clothing, we’ve got you covered.
                             </p>
                         </div>
                     </div>
@@ -73,17 +76,17 @@ const Banner = () => {
                 {/* Slide 3 */}
                 <div className="relative">
                     <img
-                        src=""
+                        src={image3}
                         alt="Community"
                         className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center px-4 rounded-xl">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
-                                Transforms Into Reality
+                                Post-Race Recovery Strategies for Runners
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-1/2 mx-auto">
-                                By joining us, you fund personal goals, empower startups, grow businesses, and nurture creative ventures. Together, we can bring innovative ideas to life, support the growth of impactful projects, and help individuals achieve their dreams.
+                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                                Recover effectively after your marathon with our recovery tips. Focus on nutrition and stretching to aid in muscle recovery.
                             </p>
                         </div>
                     </div>

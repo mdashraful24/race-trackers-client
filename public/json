@@ -1,112 +1,122 @@
 [
     {
-        "title": "City Marathon 2024",
-        "startRegistrationDate": "2024-02-01T00:00:00Z",
-        "endRegistrationDate": "2024-05-01T00:00:00Z",
-        "marathonStartDate": "2024-06-15T07:00:00Z",
+        "title": "City Marathon 2015",
+        "startRegistrationDate": "2015-02-01",
+        "endRegistrationDate": "2015-05-01",
+        "marathonStartDate": "2015-06-15",
         "location": "New York City, NY",
         "runningDistance": "42k",
         "description": "Join us for the annual City Marathon through the streets of New York. Experience a thrilling race for runners of all levels!",
         "marathonImage": "https://i.ibb.co.com/fDVzxnb/marathon-6660180-1280.jpg",
-        "totalRegistrationCount": 1200
+        "totalRegistrationCount": 1200,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Mountain Trail Race 2024",
-        "startRegistrationDate": "2024-03-15T00:00:00Z",
-        "endRegistrationDate": "2024-06-01T00:00:00Z",
-        "marathonStartDate": "2024-07-10T08:00:00Z",
+        "title": "Mountain Trail Race 2015",
+        "startRegistrationDate": "2015-03-15",
+        "endRegistrationDate": "2015-06-01",
+        "marathonStartDate": "2015-07-10",
         "location": "Rocky Mountains, CO",
         "runningDistance": "25k",
         "description": "Test your endurance in the rugged Rocky Mountains with this thrilling trail race.",
         "marathonImage": "https://i.ibb.co.com/RNw17tn/marathon-6580967-1280.jpg",
-        "totalRegistrationCount": 800
+        "totalRegistrationCount": 800,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Desert Run 2024",
-        "startRegistrationDate": "2024-04-01T00:00:00Z",
-        "endRegistrationDate": "2024-06-30T00:00:00Z",
-        "marathonStartDate": "2024-08-05T06:00:00Z",
+        "title": "Desert Run 2015",
+        "startRegistrationDate": "2015-04-01",
+        "endRegistrationDate": "2015-06-30",
+        "marathonStartDate": "2015-08-05",
         "location": "Death Valley, CA",
         "runningDistance": "10k",
         "description": "Run through the world's hottest desert and challenge yourself in extreme conditions.",
         "marathonImage": "https://i.ibb.co.com/bFJ2gfx/marathon-7111384-1280.jpg",
-        "totalRegistrationCount": 600
+        "totalRegistrationCount": 600,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Beachfront Marathon 2024",
-        "startRegistrationDate": "2024-05-01T00:00:00Z",
-        "endRegistrationDate": "2024-08-01T00:00:00Z",
-        "marathonStartDate": "2024-09-10T05:00:00Z",
+        "title": "Beachfront Marathon 2015",
+        "startRegistrationDate": "2015-05-01",
+        "endRegistrationDate": "2015-08-01",
+        "marathonStartDate": "2015-09-10",
         "location": "Miami Beach, FL",
         "runningDistance": "42k",
         "description": "A marathon along the scenic beachfront of Miami, with breathtaking ocean views.",
         "marathonImage": "https://i.ibb.co.com/cc8x8Q1/marathon-4646827-1280.jpg",
-        "totalRegistrationCount": 1000
+        "totalRegistrationCount": 1000,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Forest Run 2024",
-        "startRegistrationDate": "2024-06-01T00:00:00Z",
-        "endRegistrationDate": "2024-09-01T00:00:00Z",
-        "marathonStartDate": "2024-10-15T07:00:00Z",
+        "title": "Forest Run 2015",
+        "startRegistrationDate": "2015-06-01",
+        "endRegistrationDate": "2015-09-01",
+        "marathonStartDate": "2015-10-15",
         "location": "Olympic National Park, WA",
         "runningDistance": "50k",
         "description": "Run through the lush forests of the Olympic National Park and challenge your stamina.",
         "marathonImage": "https://i.ibb.co.com/GRsknbh/pexels-runffwpu-2654902.jpg",
-        "totalRegistrationCount": 400
+        "totalRegistrationCount": 400,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Coastal Marathon 2024",
-        "startRegistrationDate": "2024-07-01T00:00:00Z",
-        "endRegistrationDate": "2024-09-01T00:00:00Z",
-        "marathonStartDate": "2024-11-01T06:00:00Z",
+        "title": "Coastal Marathon 2015",
+        "startRegistrationDate": "2015-07-01",
+        "endRegistrationDate": "2015-09-01",
+        "marathonStartDate": "2015-11-01",
         "location": "Pacific Coast, CA",
         "runningDistance": "42k",
         "description": "Run along the stunning Pacific coast, taking in the dramatic ocean views.",
-        "marathonImage": "https://i.ibb.co.com/Zf76Cnx/race-932254-960-720.jpg ",
-        "totalRegistrationCount": 900
+        "marathonImage": "https://i.ibb.co.com/Zf76Cnx/race-932254-960-720.jpg",
+        "totalRegistrationCount": 900,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Urban Run 2024",
-        "startRegistrationDate": "2024-02-15T00:00:00Z",
-        "endRegistrationDate": "2024-05-15T00:00:00Z",
-        "marathonStartDate": "2024-06-01T06:30:00Z",
+        "title": "Urban Run 2015",
+        "startRegistrationDate": "2015-02-15",
+        "endRegistrationDate": "2015-05-15",
+        "marathonStartDate": "2015-06-01",
         "location": "San Francisco, CA",
         "runningDistance": "10k",
         "description": "A fast-paced race through the iconic streets of San Francisco.",
         "marathonImage": "https://i.ibb.co.com/dBngFQb/running-6660186-1280.jpg",
-        "totalRegistrationCount": 1200
+        "totalRegistrationCount": 1200,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Alpine Challenge 2024",
-        "startRegistrationDate": "2024-04-15T00:00:00Z",
-        "endRegistrationDate": "2024-07-01T00:00:00Z",
-        "marathonStartDate": "2024-08-01T07:00:00Z",
+        "title": "Alpine Challenge 2015",
+        "startRegistrationDate": "2015-04-15",
+        "endRegistrationDate": "2015-07-01",
+        "marathonStartDate": "2015-08-01",
         "location": "Swiss Alps, Switzerland",
         "runningDistance": "25k",
         "description": "An ultra-marathon through the beautiful Swiss Alps, with stunning mountain vistas.",
         "marathonImage": "https://i.ibb.co.com/9cPJW5N/sport-3837677-1280.jpg",
-        "totalRegistrationCount": 450
+        "totalRegistrationCount": 450,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "City Lights Marathon 2024",
-        "startRegistrationDate": "2024-05-01T00:00:00Z",
-        "endRegistrationDate": "2024-08-01T00:00:00Z",
-        "marathonStartDate": "2024-09-20T07:00:00Z",
+        "title": "City Lights Marathon 2015",
+        "startRegistrationDate": "2015-05-01",
+        "endRegistrationDate": "2015-08-01",
+        "marathonStartDate": "2015-09-20",
         "location": "Los Angeles, CA",
         "runningDistance": "42k",
         "description": "A nighttime marathon that runs through the dazzling city lights of Los Angeles.",
         "marathonImage": "https://i.ibb.co.com/Bg7bvp6/sports-210661-1280.jpg",
-        "totalRegistrationCount": 1500
+        "totalRegistrationCount": 1500,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     },
     {
-        "title": "Jungle Adventure Run 2024",
-        "startRegistrationDate": "2024-08-01T00:00:00Z",
-        "endRegistrationDate": "2024-10-01T00:00:00Z",
-        "marathonStartDate": "2024-11-10T08:00:00Z",
+        "title": "Jungle Adventure Run 2015",
+        "startRegistrationDate": "2015-08-01",
+        "endRegistrationDate": "2015-10-01",
+        "marathonStartDate": "2015-11-10",
         "location": "Amazon Rainforest, Brazil",
         "runningDistance": "50k",
         "description": "A wild race through the heart of the Amazon rainforest, challenging runners to brave the jungle.",
         "marathonImage": "https://i.ibb.co.com/H2BnP7V/martins-zemlickis-NPFu4-Gf-FZ7-E-unsplash.jpg",
-        "totalRegistrationCount": 350
+        "totalRegistrationCount": 350,
+        "createdAt": "2015-12-31T16:53:39.461Z"
     }
 ]

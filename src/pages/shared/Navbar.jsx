@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 import siteLogo from "../../../src/assets/logo.png"
+import DarkLightTheme from "./DarkLightTheme";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -82,30 +83,6 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
                             {links}
-                            {/* {!user && (
-                                    <>
-                                        <li>
-                                            <NavLink
-                                                to="/login"
-                                                className={({ isActive }) =>
-                                                    isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
-                                                }
-                                            >
-                                                Login
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink
-                                                to="/register"
-                                                className={({ isActive }) =>
-                                                    isActive ? "text-blue-500 font-bold" : "hover:text-blue-500"
-                                                }
-                                            >
-                                                Register
-                                            </NavLink>
-                                        </li>
-                                    </>
-                                )} */}
                         </ul>
                     </div>
                     <div className="flex items-center">
@@ -122,7 +99,7 @@ const Navbar = () => {
                 {/* Right: Auth Links */}
                 <div className="navbar-end">
                     <div className="navbar-end hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">{links}</ul>
+                        <ul className="menu menu-horizontal gap-2 px-3">{links}</ul>
                     </div>
                     {user ? (
                         <div className="relative dropdown-container">
@@ -163,6 +140,9 @@ const Navbar = () => {
                             </Link>
                         </div>
                     )}
+                </div>
+                <div className="pl-2 md:pl-3">
+                    <DarkLightTheme></DarkLightTheme>
                 </div>
             </div>
         </div>

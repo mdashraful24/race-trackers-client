@@ -25,7 +25,6 @@ const MyApplyList = () => {
             });
     }, [user.email, searchQuery]);
 
-
     const handleDelete = (_id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -98,6 +97,10 @@ const MyApplyList = () => {
             });
     };
 
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
@@ -105,9 +108,6 @@ const MyApplyList = () => {
             </div>
         );
     }
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
 
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
@@ -139,7 +139,6 @@ const MyApplyList = () => {
                                 <th className="p-4 text-center">Start Registration</th>
                                 <th className="p-4 text-center">Number</th>
                                 <th className="p-4 text-center">Additional Info</th>
-                                <th className="p-4 text-center">Email</th>
                                 <th className="p-4 text-center">Actions</th>
                             </tr>
                         </thead>
@@ -153,7 +152,6 @@ const MyApplyList = () => {
                                     <td className="p-4 text-center">{new Date(race.marathonStartDate).toLocaleDateString()}</td>
                                     <td className="p-4 text-center">{race.number}</td>
                                     <td className="p-4 text-center">{race.additionalInfo}</td>
-                                    <td className="p-4 text-center">{race.userEmail}</td>
                                     <td className="p-4 text-center">
                                         <div className="flex flex-row justify-center items-center gap-3">
                                             <button
@@ -187,6 +185,39 @@ const MyApplyList = () => {
                         <h3 className="text-center text-xl font-bold mb-4">Update Registration</h3>
                         <form onSubmit={handleUpdateSubmit}>
                             <div className="mb-4">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value={user.email}
+                                    readOnly
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="title" className="block text-sm font-medium text-gray-700">Marathon Title</label>
+                                <input
+                                    id="title"
+                                    name="title"
+                                    type="text"
+                                    value={selectedRace?.title}
+                                    readOnly
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">Marathon Start Date</label>
+                                <input
+                                    id="startDate"
+                                    name="startDate"
+                                    type="text"
+                                    value={new Date(selectedRace?.marathonStartDate).toLocaleDateString()}
+                                    readOnly
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="mb-4">
                                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First Name</label>
                                 <input
                                     id="firstName"
@@ -209,38 +240,40 @@ const MyApplyList = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="number" className="block text-sm font-medium text-gray-700">Number</label>
+                                <label htmlFor="number" className="block text-sm font-medium text-gray-700">Contact Number</label>
                                 <input
                                     id="number"
                                     name="number"
                                     type="text"
                                     defaultValue={selectedRace?.number}
+                                    required
                                     className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                 />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700">Additional Info</label>
-                                <textarea
+                                <input
                                     id="additionalInfo"
                                     name="additionalInfo"
-                                    rows="3"
+                                    type="text"
                                     defaultValue={selectedRace?.additionalInfo}
+                                    required
                                     className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                 />
                             </div>
                             <div className="flex justify-between">
                                 <button
-                                    type="button"
-                                    className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
-                                    onClick={() => setShowModal(false)}
-                                >
-                                    Cancel
-                                </button>
-                                <button
                                     type="submit"
-                                    className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                                    className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
                                 >
                                     Update
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowModal(false)}
+                                    className="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600"
+                                >
+                                    Close
                                 </button>
                             </div>
                         </form>
@@ -249,7 +282,6 @@ const MyApplyList = () => {
             )}
         </div>
     );
-
 };
 
 export default MyApplyList;

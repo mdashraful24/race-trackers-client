@@ -124,6 +124,33 @@ const RegistrationForm = () => {
                 <h2 className="text-3xl md:text-3xl font-bold text-center mb-6 md:mb-10">Registration for "{title}"</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group mb-4">
+                        <label className="block mb-2">Email</label>
+                        <input
+                            type="email"
+                            value={user?.email || ""}
+                            readOnly
+                            className="w-full p-3 border rounded-lg"
+                        />
+                    </div>
+                    <div className="form-group mb-4">
+                        <label className="block mb-2">Marathon Title</label>
+                        <input
+                            type="text"
+                            value={title}
+                            readOnly
+                            className="w-full p-3 border rounded-lg"
+                        />
+                    </div>
+                    <div className="form-group mb-4">
+                        <label className="block mb-2">Start Date</label>
+                        <input
+                            type="text"
+                            value={new Date(marathonStartDate).toLocaleDateString()}
+                            className="w-full p-3 border rounded-lg"
+                            readOnly
+                        />
+                    </div>
+                    <div className="form-group mb-4">
                         <label className="block mb-2">First Name</label>
                         <input
                             type="text"
@@ -157,38 +184,11 @@ const RegistrationForm = () => {
                         <label className="block mb-2">Additional Info</label>
                         <textarea
                             name="additionalInfo"
-                            className="w-full p-3 border rounded-lg"
+                            className="w-full p-3 border rounded-lg resize-none"
                             placeholder="Additional Info"
                             rows="4"
                             required
                         ></textarea>
-                    </div>
-                    <div className="form-group mb-4">
-                        <label className="block mb-2">User Email</label>
-                        <input
-                            type="email"
-                            value={user?.email || ""}
-                            readOnly
-                            className="w-full p-3 border rounded-lg cursor-not-allowed"
-                        />
-                    </div>
-                    <div className="form-group mb-4">
-                        <label className="block mb-2">Marathon Title</label>
-                        <input
-                            type="text"
-                            value={title}
-                            readOnly
-                            className="w-full p-3 border rounded-lg cursor-not-allowed"
-                        />
-                    </div>
-                    <div className="form-group mb-4">
-                        <label className="block mb-2">Start Date</label>
-                        <input
-                            type="text"
-                            value={new Date(marathonStartDate).toLocaleDateString()}
-                            className="w-full p-3 border rounded-lg cursor-not-allowed"
-                            readOnly
-                        />
                     </div>
                     <button
                         type="submit"

@@ -6,7 +6,7 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row justify-center container mx-auto my-10">
             {/* Sidebar with NavLinks */}
             <aside className="p-4 h-4/5 rounded-md shadow-md">
-                <ul className="space-y-4">
+                <ul className="lg:space-y-4 flex lg:flex-col md:justify-center md:items-center">
                     <li>
                         <NavLink
                             to="addMarathons"

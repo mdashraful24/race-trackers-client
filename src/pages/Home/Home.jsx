@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import ExtraSection from "./ExtraSection";
 import MarathonCards from "./MarathonCards";
 import Team from "./Team";
 import UpcomingMarathons from "./UpcomingMarathons";
@@ -10,6 +11,7 @@ const Home = () => {
             <MarathonCards></MarathonCards>
             <UpcomingMarathons></UpcomingMarathons>
             <Team></Team>
+            <ExtraSection></ExtraSection>
         </div>
     );
 };

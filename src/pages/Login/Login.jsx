@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 // import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
     const { userLogin, setUser, handleGoogleSignIn } = useContext(AuthContext);
@@ -35,8 +36,17 @@ const Login = () => {
         const password = form.password.value;
         userLogin(email, password)
             .then(result => {
-                const user = result.user;
-                setUser(user);
+                const users = result.user;
+
+                const user = { email: email }
+                axios.post('http://localhost:5000/jwt', user, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+
+                setUser(users);
                 toast.success("Login Successfully!");
                 navigate(location?.state ? location.state : "/");
             })

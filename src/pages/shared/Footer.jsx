@@ -1,85 +1,44 @@
+import siteLogo from "../../../src/assets/logo.png"
+
 const Footer = () => {
     return (
         <div className="pb-2 shadow-inner border-t">
-            <footer className="footer container mx-auto grid grid-cols-2 md:grid-cols-3 justify-items-center gap-8 pt-12 pb-2 px-8">
+            <footer className="container mx-auto text-base-content px-8 md:px-10 lg:px-24 pt-10 pb-10 flex flex-col justify-center items-center gap-3">
+                <div className="flex items-center gap-2">
+                    <img src={siteLogo} alt="siteLogo" className="w-12" />
+                    <h2 className="text-3xl font-extrabold">RaceTrackers</h2>
+                </div>
+                <p className="lg:w-2/3 mx-auto text-center">RaceTrackers hosts exciting marathons, offering a well-organized race experience with top-notch support. Join us for a memorable journey, whether you're a seasoned runner or a first-timer!</p>
+            </footer>
+
+            <footer className="footer container mx-auto grid grid-cols-2 md:grid-cols-4 justify-items-center gap-8 px-8">
                 <nav>
-                    <h6 className="text-lg uppercase font-bold">Services</h6>
-                    <a className="link link-hover text-base">Projects</a>
-                    <a className="link link-hover text-base">Donations</a>
-                    <a className="link link-hover text-base">FAQ</a>
+                    <h6 className="text-lg uppercase font-bold">Club</h6>
+                    <a className="link link-hover text-base">About Us</a>
                     <a className="link link-hover text-base">Contact</a>
-                </nav>
-                <nav>
-                    <h6 className="text-lg uppercase font-bold">Company</h6>
-                    <a className="link link-hover text-base">About us</a>
-                    <a className="link link-hover text-base">Careers</a>
                     <a className="link link-hover text-base">Blog</a>
                 </nav>
-                <nav className='pl-3 md:pl-0'>
+                <nav>
+                    <h6 className="text-lg uppercase font-bold">Services</h6>
+                    <a className="link link-hover text-base">Events</a>
+                    <a className="link link-hover text-base">Workout</a>
+                    <a className="link link-hover text-base">Training</a>
+                </nav>
+                <nav>
+                    <h6 className="text-lg uppercase font-bold">Media</h6>
+                    <a className="link link-hover text-base" href='https://www.facebook.com/ashraful.islam.ratul.455820?mibextid=ZbWKwL'
+                        target="_blank">Facebook</a>
+                    <a className="link link-hover text-base" href="https://x.com/?lang=en" target="_blank">Twitter</a>
+                    <a className="link link-hover text-base" href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </nav>
+                <nav>
                     <h6 className="text-lg uppercase font-bold">Legal</h6>
                     <a className="link link-hover text-base">Terms of use</a>
                     <a className="link link-hover text-base">Privacy policy</a>
                     <a className="link link-hover text-base">Cookie policy</a>
                 </nav>
             </footer>
-
-            <footer className="container mx-auto text-base-content px-8 md:px-10 lg:px-24 py-4 flex flex-col-reverse text-center items-center justify-between gap-5">
-                <aside className="grid-flow-col items-center">
-                    <p className='space-y-0.5'>
-                        <span className="text-3xl font-extrabold bg-gradient-to-r from-[#843c94] via-[#5e1e70] to-[#f97316] text-transparent bg-clip-text tracking-wide">CrowdCube</span>
-                        <br />
-                        <p>Innovating solutions for the future since 2000.</p>
-                        <p>&copy; {new Date().getFullYear()} CrowdCube. All rights reserved.</p>
-                    </p>
-                </aside>
-                <nav className="md:place-self-center md:justify-self-end mt-2">
-                    <div className="grid grid-flow-col gap-4">
-                        <a
-                            href='https://www.facebook.com/ashraful.islam.ratul.455820?mibextid=ZbWKwL'
-                            target="_blank">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current transition-transform duration-500 ease-in-out hover:scale-125">
-                                <path
-                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                            </svg>
-                        </a>
-
-                        <a
-                            href="https://x.com/?lang=en"
-                            target="_blank">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current transition-transform duration-500 ease-in-out hover:scale-125">
-                                <path
-                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            <img className='w-8 h-6 transition-transform duration-500 ease-in-out hover:scale-125' src="" alt="" />
-                        </a>
-                        <a
-                            href="https://www.youtube.com/results?search_query=crowedCube"
-                            target="_blank">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current transition-transform duration-500 ease-in-out hover:scale-125">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </nav>
-            </footer>
+            <p className="text-center py-5">&copy; {new Date().getFullYear()} RaceTrackers. All rights reserved.</p>
         </div>
     );
 };
