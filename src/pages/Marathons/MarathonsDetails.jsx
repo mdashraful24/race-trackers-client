@@ -3,6 +3,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { IoLocationSharp } from "react-icons/io5";
+import { Helmet } from "react-helmet-async";
 
 const MarathonsDetails = () => {
     const [timeLeft, setTimeLeft] = useState("");
@@ -23,16 +25,13 @@ const MarathonsDetails = () => {
         totalRegistrationCount,
     } = useLoaderData();
 
-    // Simulate loading completion
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLoading(false); // After 2 seconds, hide the loading spinner
-        }, 1000); // Adjust as needed to simulate your loading period
-
+            setLoading(false);
+        }, 1000);
         return () => clearTimeout(timer);
     }, []);
 
-    // Calculate time remaining until the end of registration
     useEffect(() => {
         const interval = setInterval(() => {
             const now = new Date();
@@ -55,10 +54,9 @@ const MarathonsDetails = () => {
             }
         }, 1000);
 
-        return () => clearInterval(interval); // Clean up on unmount
+        return () => clearInterval(interval);
     }, [endRegistrationDate]);
 
-    // Check if registration is open
     const isRegistrationOpen =
         new Date() >= new Date(startRegistrationDate) &&
         new Date() <= new Date(endRegistrationDate);
@@ -87,35 +85,41 @@ const MarathonsDetails = () => {
     }
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto mb-20 mt-10 px-3">
+            <Helmet>
+                <title>Marathon Details | RaceTrackers</title>
+            </Helmet>
+
+            <h2 className="text-2xl md:text-4xl font-bold text-center text-purple-800 mb-3">Marathon Details</h2>
+            <div className="mb-10 md:mb-14 h-1 w-36 bg-[#591a6a] mx-auto"></div>
+
             {/* Header Section */}
-            <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="max-w-4xl mx-auto shadow-lg rounded-lg overflow-hidden">
                 <img src={marathonImage} alt={title} className="w-full" />
                 <div className="p-6">
                     <h1 className="text-3xl font-bold text-center text-lime-600 mb-4">{title}</h1>
-                    <p className="text-gray-600 mb-6 text-justify">Description: {description}</p>
-
+                    <p className="mb-6 text-justify">Description: {description}</p>
                     {/* Details Section */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="flex items-center gap-2">
-                            <p className="text-lg font-semibold">📍 Location:</p>
-                            <p className="text-gray-700">{location}</p>
+                            <p className="text-blue-500 text-xl"><IoLocationSharp /></p>
+                            <p className="text-lg font-semibold">Location:</p>
+                            <p>{location}</p>
                         </div>
+                        {/* Start Reg */}
                         <div className="flex items-center gap-2">
                             <p className="text-lg font-semibold">📅 Start Registration:</p>
-                            <p className="text-gray-700">{new Date(startRegistrationDate).toLocaleDateString()}</p>
+                            <p>{new Date(startRegistrationDate).toLocaleDateString()}</p>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <p className="text-lg font-semibold">📅 End Registration:</p>
-                            <p className="text-gray-700">{new Date(endRegistrationDate).toLocaleDateString()}</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <p className="text-lg font-semibold">🏃 Marathon Start Date:</p>
-                            <p className="text-gray-700">{new Date(marathonStartDate).toLocaleDateString()}</p>
-                        </div>
+                        {/* Distance */}
                         <div className="flex items-center gap-2">
                             <p className="text-lg font-semibold">🏅 Running Distance:</p>
-                            <p className="text-gray-700">{runningDistance}</p>
+                            <p>{runningDistance}</p>
+                        </div>
+                        {/* End Reg */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-lg font-semibold">📅 End Registration:</p>
+                            <p>{new Date(endRegistrationDate).toLocaleDateString()}</p>
                         </div>
                         {/* Total Registration Count */}
                         <div className="flex items-center gap-2">
@@ -123,13 +127,17 @@ const MarathonsDetails = () => {
                             <p className="text-lg font-semibold">Total Registration Count:</p>
                             <p>{totalRegistrationCount}</p>
                         </div>
-
+                        {/* Marathon Start */}
+                        <div className="flex items-center gap-2">
+                            <p className="text-lg font-semibold">🏃 Marathon Start Date:</p>
+                            <p>{new Date(marathonStartDate).toLocaleDateString()}</p>
+                        </div>
                         {/* Countdown Timer */}
-                        <div className="flex flex-col items-center gap-4">
+                        <div className="flex flex-col items-center gap-4 mt-2">
                             {registrationClosed ? (
                                 <p className="text-red-500 text-lg font-semibold">⏳ Time Left for Registration: Registration closed</p>
                             ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-center items-center">
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-center items-center">
                                     <div className="flex justify-center items-center w-24 h-24">
                                         <CircularProgressbar value={timeParts.days} maxValue={365} text={`${timeParts.days}d`} styles={circleStyleDay} />
                                     </div>
@@ -145,8 +153,8 @@ const MarathonsDetails = () => {
                     </div>
 
                     {/* Register Button */}
-                    <div className="mt-6 text-center">
-                        <Link to={`/registrationForm/${_id}`} disabled={!isRegistrationOpen} className={`btn btn-primary ${isRegistrationOpen ? "" : "btn-disabled"}`}>
+                    <div className="mt-10 text-center">
+                        <Link to={`/registrationForm/${_id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-700 hover:bg-purple-800 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
                             {isRegistrationOpen ? "Register Now" : "Registration Closed"}
                         </Link>
                     </div>

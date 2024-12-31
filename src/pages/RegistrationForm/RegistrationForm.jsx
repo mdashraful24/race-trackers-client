@@ -77,7 +77,7 @@ const RegistrationForm = () => {
             number,
             additionalInfo,
             userEmail: user?.email,
-            marathonStartDate, // Include marathonStartDate
+            marathonStartDate
         };
 
         if (!firstName || !lastName || !title || !number || !additionalInfo) {
@@ -95,7 +95,6 @@ const RegistrationForm = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.insertedId) {
-                    // Update the total registration count in the state
                     setTotalRegistrations(prevCount => prevCount + 1);
 
                     Swal.fire({
@@ -104,7 +103,6 @@ const RegistrationForm = () => {
                         icon: "success",
                         confirmButtonText: "Cool",
                     }).then(() => {
-                        // Redirect to a specific page after success
                         navigate("/dashboard/myApplyList");
                     });
                 }
@@ -112,7 +110,6 @@ const RegistrationForm = () => {
 
         form.reset();
     };
-
 
     return (
         <div className="px-3 mt-10 md:mt-14 mb-20">
