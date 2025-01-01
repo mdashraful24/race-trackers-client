@@ -32,11 +32,11 @@ const MarathonCard = ({ marathon }) => {
                     </div>
                     <div className="flex items-center gap-1 text-white">
                         <MdAppRegistration />
-                        <p>Registration End: {startRegistrationDate}</p>
+                        <p>Registration End: {new Date(startRegistrationDate).toLocaleDateString()}</p>
                     </div>
                     <div className="flex items-center gap-1 text-white">
                         <MdAppRegistration />
-                        <p>Marathon Start: {marathonStartDate}</p>
+                        <p>Marathon Start: {new Date(marathonStartDate).toLocaleDateString()}</p>
                     </div>
                 </div>
                 {/* Button */}

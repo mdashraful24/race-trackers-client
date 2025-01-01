@@ -39,7 +39,7 @@ const Login = () => {
                 const user = result.user;
 
                 // const user = { email: email }
-                // axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
+                // axios.post('http://localhost:5000/jwt', user, {
                 //     withCredentials: true
                 // })
                 //     .then(res => {

@@ -15,7 +15,8 @@ const MarathonPage = () => {
         const fetchMarathons = async () => {
             try {
                 const response = await axiosSecure.get(`/marathonPage`, {
-                    params: { sortOrder }
+                    params: { sortOrder },
+                    withCredentials: true,
                 });
                 setMarathons(response.data);
                 setLoading(false);

@@ -38,7 +38,7 @@ const MyApplyList = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${_id}`, {
+                    fetch(`http://localhost:5000/myApplyList/${_id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -71,7 +71,7 @@ const MyApplyList = () => {
             additionalInfo: event.target.additionalInfo.value,
         };
 
-        fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${selectedRace._id}`, {
+        fetch(`http://localhost:5000/myApplyList/${selectedRace._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
