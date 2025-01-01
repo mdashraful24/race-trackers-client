@@ -33,13 +33,19 @@ const MarathonsDetails = () => {
     }, []);
 
     useEffect(() => {
+        if (new Date() < new Date(startRegistrationDate)) {
+            setTimeLeft("Coming Soon");
+            setRegistrationClosed(true);
+            return;
+        }
+
         const interval = setInterval(() => {
             const now = new Date();
             const endDate = new Date(endRegistrationDate);
             const diff = endDate - now;
 
             if (diff <= 0) {
-                setTimeLeft("Registration closed");
+                setTimeLeft("Closed");
                 setTimeParts({ days: 0, hours: 0, minutes: 0, seconds: 0 });
                 setRegistrationClosed(true);
                 clearInterval(interval);
@@ -55,7 +61,7 @@ const MarathonsDetails = () => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [endRegistrationDate]);
+    }, [endRegistrationDate, startRegistrationDate]);
 
     const isRegistrationOpen =
         new Date() >= new Date(startRegistrationDate) &&
@@ -122,7 +128,7 @@ const MarathonsDetails = () => {
                             <p>{new Date(endRegistrationDate).toLocaleDateString()}</p>
                         </div>
                         {/* Total Registration Count */}
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2.5">
                             <FaUsers className="text-blue-500" />
                             <p className="text-lg font-semibold">Total Registration Count:</p>
                             <p>{totalRegistrationCount}</p>
@@ -133,9 +139,11 @@ const MarathonsDetails = () => {
                             <p>{new Date(marathonStartDate).toLocaleDateString()}</p>
                         </div>
                         {/* Countdown Timer */}
-                        <div className="flex flex-col items-center gap-4 mt-2">
-                            {registrationClosed ? (
-                                <p className="text-red-500 text-lg font-semibold">⏳ Time Left for Registration: Registration closed</p>
+                        <div className="">
+                            {timeLeft === "Coming Soon" ? (
+                                <p className="text-lg font-semibold">⏳ Registration: <span className="text-blue-600 text-lg font-semibold">{timeLeft}</span></p>
+                            ) : registrationClosed ? (
+                                    <p className="text-lg font-semibold">🚫 Registration: <span className="text-red-500 text-lg font-semibold">{timeLeft}</span></p>
                             ) : (
                                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-center items-center">
                                     <div className="flex justify-center items-center w-24 h-24">
@@ -154,9 +162,11 @@ const MarathonsDetails = () => {
 
                     {/* Register Button */}
                     <div className="mt-10 text-center">
-                        <Link to={`/registrationForm/${_id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-700 hover:bg-purple-800 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
-                            {isRegistrationOpen ? "Register Now" : "Registration Closed"}
-                        </Link>
+                        {timeLeft !== "Coming Soon" && !registrationClosed && (
+                            <Link to={`/registrationForm/${_id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-700 hover:bg-purple-800 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
+                                {isRegistrationOpen ? "Register Now" : "Registration Closed"}
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>

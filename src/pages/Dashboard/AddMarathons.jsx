@@ -12,9 +12,9 @@ const AddMarathons = () => {
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
 
+    // Handle Form
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const form = e.target;
         const title = form.title.value;
         const location = form.location.value;
@@ -22,7 +22,7 @@ const AddMarathons = () => {
         const description = form.description.value;
         const marathonImage = form.marathonImage.value;
         const createdAt = new Date();
-        // const totalRegistrations = 0;
+        const totalRegistrationCount = 0;
 
         const newMarathon = {
             title,
@@ -34,7 +34,7 @@ const AddMarathons = () => {
             description,
             marathonImage,
             createdAt,
-            // totalRegistrations,
+            totalRegistrationCount,
             userEmail: user?.email,
             userName: user?.displayName,
         };
@@ -62,7 +62,8 @@ const AddMarathons = () => {
             return;
         }
 
-        fetch("http://localhost:5000/addMarathons", {
+        // Post to Server
+        fetch("https://mw-assignments11-server.vercel.app/addMarathons", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -81,6 +82,7 @@ const AddMarathons = () => {
                 }
             });
 
+        // Reset form
         form.reset();
         setStartRegistrationDate(null);
         setEndRegistrationDate(null);
@@ -95,6 +97,7 @@ const AddMarathons = () => {
             </Helmet>
 
             <form onSubmit={handleSubmit} className="border rounded-xl px-6 py-4">
+
                 {/* Marathon Title */}
                 <div className="form-group mb-4">
                     <label className="block mb-2">Marathon Title</label>
@@ -106,6 +109,7 @@ const AddMarathons = () => {
                         required
                     />
                 </div>
+                
                 <div className="flex flex-col md:flex-row md:justify-between md:items-center">
                     {/* Start Registration Date */}
                     <div className="form-group mb-4">

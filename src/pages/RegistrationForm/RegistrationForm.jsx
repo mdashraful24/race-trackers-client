@@ -34,7 +34,7 @@ const RegistrationForm = () => {
     //         return;
     //     }
 
-    //     fetch("http://localhost:5000/registrations", {
+    //     fetch("https://mw-assignments11-server.vercel.app/registrations", {
     //         method: "POST",
     //         headers: {
     //             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const RegistrationForm = () => {
             return;
         }
 
-        fetch("http://localhost:5000/registrations", {
+        fetch("https://mw-assignments11-server.vercel.app/registrations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

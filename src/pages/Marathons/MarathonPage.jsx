@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { IoLocationSharp } from 'react-icons/io5';
 import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 
@@ -9,40 +8,38 @@ const MarathonPage = () => {
     const [marathons, setMarathons] = useState([]);
     const [sortOrder, setSortOrder] = useState('desc');
     const axiosSecure = UseAxiosSecure();
+    const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     const fetchMarathons = async () => {
-    //         try {
-    //             const response = await axios.get(`http://localhost:5000/marathonPage`,
-    //                 {
-    //                     params: { sortOrder },
-    //                 });
-    //             setMarathons(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching marathons:', error);
-    //         }
-    //     };
-    //     fetchMarathons();
-    // }, [sortOrder]);
+    // Get data
     useEffect(() => {
         const fetchMarathons = async () => {
             try {
                 const response = await axiosSecure.get(`/marathonPage`, {
-                    params: { sortOrder },
-                    // withCredentials: true,
+                    params: { sortOrder }
                 });
                 setMarathons(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching marathons:', error);
+                setLoading(false);
             }
         };
         fetchMarathons();
     }, [sortOrder]);
 
-
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
+        setLoading(false);
     };
+
+    // Useful loading
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="px-4 mt-10 mb-20 container mx-auto min-h-80">
@@ -50,6 +47,7 @@ const MarathonPage = () => {
                 <title>Marathons | CrowdCube</title>
             </Helmet>
 
+            {/* Title */}
             <h2 className="text-2xl md:text-4xl font-bold text-center text-purple-800 mb-3">All Marathons Events</h2>
             <div className="mb-8 md:mb-14 h-1 w-36 bg-[#591a6a] mx-auto"></div>
 

@@ -13,20 +13,6 @@ const MyApplyList = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const axiosSecure = UseAxiosSecure();
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/myApplyList?title=${searchQuery}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             const filterData = data.filter(run => run.userEmail === user.email);
-    //             setApplyingRace(filterData);
-    //             setLoading(false);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error fetching campaigns:", error);
-    //             setLoading(false);
-    //         });
-    // }, [user.email, searchQuery]);
-
     useEffect(() => {
         axiosSecure.get(`/myApplyList?title=${searchQuery}`)
             .then((response) => {
@@ -52,7 +38,7 @@ const MyApplyList = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/myApplyList/${_id}`, {
+                    fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${_id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -85,7 +71,7 @@ const MyApplyList = () => {
             additionalInfo: event.target.additionalInfo.value,
         };
 
-        fetch(`http://localhost:5000/myApplyList/${selectedRace._id}`, {
+        fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${selectedRace._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -125,7 +111,7 @@ const MyApplyList = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">
             {/* Helmet */}
             <Helmet>
                 <title>My Apply List | RaceTrackers</title>
@@ -135,13 +121,14 @@ const MyApplyList = () => {
             <div className="mb-4">
                 <input
                     type="text"
-                    placeholder="Search by Title"
+                    placeholder="Search by marathon event title"
                     value={searchQuery}
                     onChange={handleSearchChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md"
                 />
             </div>
 
+            {/* Apply List */}
             {applyingRace.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="min-w-full table-auto border border-gray-400 shadow-lg">
@@ -190,13 +177,13 @@ const MyApplyList = () => {
                     </table>
                 </div>
             ) : (
-                <p className="text-center text-gray-600">You have no campaigns yet.</p>
+                <p className="text-center text-gray-600">You have no marathons yet.</p>
             )}
 
-            {/* Modal */}
+            {/* Modal for Updating Registration List  */}
             {showModal && (
                 <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 px-2">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto md:overflow-y-auto lg:overflow-hidden">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto">
                         <h3 className="text-center text-black text-xl font-bold mb-4">Update Registration</h3>
                         <form onSubmit={handleUpdateSubmit}>
                             <div className="mb-4">

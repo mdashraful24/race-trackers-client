@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://mw-assignments11-server.vercel.app',
     withCredentials: true
 })
 
@@ -27,7 +27,9 @@ const UseAxiosSecure = () => {
                         // navigate("/login");
                         navigate(location?.state ? location.state : "/login");
                     })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        // console.log(error);
+                    });
             }
             return Promise.reject(error);
         })

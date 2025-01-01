@@ -8,7 +8,7 @@ const MarathonCards = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/marathons')
+        fetch('https://mw-assignments11-server.vercel.app/marathons')
             .then(res => res.json())
             .then(data => {
                 setMarathons(data);

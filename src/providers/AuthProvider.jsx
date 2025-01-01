@@ -49,25 +49,25 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             
-            console.log('state captures', currentUser?.email)
+            // console.log('state captures', currentUser?.email)
 
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
 
-                axios.post('http://localhost:5000/jwt', user, {
+                axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log('login token', res.data);
+                        // console.log('login token', res.data);
                         setLoading(false);
                     })
             }
             else {
-                axios.post('http://localhost:5000/logout', {}, {
+                axios.post('https://mw-assignments11-server.vercel.app/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {
-                        console.log('logout', res.data);
+                        // console.log('logout', res.data);
                         setLoading(false);
                     })
             }

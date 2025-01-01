@@ -7,7 +7,7 @@ import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
     const [myCampaigns, setMyCampaigns] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentCampaign, setCurrentCampaign] = useState(null);
     const axiosSecure = UseAxiosSecure();
@@ -23,26 +23,16 @@ const MyMarathonList = () => {
         marathonImage: "",
     });
 
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/marathonPage")
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             const userCampaigns = data.filter(campaign => campaign.userEmail === user.email);
-    //             setMyCampaigns(userCampaigns);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error fetching campaigns:", error);
-    //         });
-    // }, [user.email]);
-
     useEffect(() => {
         axiosSecure.get("/marathonPage")
             .then((response) => {
                 const userCampaigns = response.data.filter(campaign => campaign.userEmail === user.email);
                 setMyCampaigns(userCampaigns);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching campaigns:", error);
+                setLoading(false);
             });
     }, [user.email]);
 
@@ -57,7 +47,7 @@ const MyMarathonList = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/marathonPage/${_id}`, {
+                fetch(`https://mw-assignments11-server.vercel.app/marathonPage/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -91,24 +81,25 @@ const MyMarathonList = () => {
         setIsModalOpen(true);
     };
 
-    // Helper function to format date to yyyy-mm-dd
+    // Function to format date to yyyy-mm-dd
     const formatDate = (date) => {
         const d = new Date(date);
         const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0'); // Ensure two-digit month
-        const day = String(d.getDate()).padStart(2, '0'); // Ensure two-digit day
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     };
 
-
+    // Handle Form Changes
     const handleFormChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Handle Submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/marathonPage/${currentCampaign._id}`, {
+        fetch(`https://mw-assignments11-server.vercel.app/marathonPage/${currentCampaign._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -135,12 +126,23 @@ const MyMarathonList = () => {
             });
     };
 
+    // Useful Loading
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
+
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">
+            {/* Helmet */}
             <Helmet>
                 <title>My Marathon List | RaceTrackers</title>
             </Helmet>
 
+            {/* Marathons List */}
             {myCampaigns.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="min-w-full table-auto border border-gray-400 shadow-lg">
@@ -153,10 +155,7 @@ const MyMarathonList = () => {
                                 <th className="p-4 text-center">Marathon Start</th>
                                 <th className="p-4 text-center">Location</th>
                                 <th className="p-4 text-center">Distance</th>
-                                {/* <th className="p-4 text-center">Description</th> */}
-                                {/* <th className="p-4 text-center">Marathon Image</th> */}
                                 <th className="p-4 text-center">User Mail</th>
-                                {/* <th className="p-4 text-center">User Name</th> */}
                                 <th className="p-4 text-center">Actions</th>
                             </tr>
                         </thead>
@@ -170,10 +169,7 @@ const MyMarathonList = () => {
                                     <td className="p-4 text-center">{new Date(myCampaign.marathonStartDate).toLocaleDateString()}</td>
                                     <td className="p-4 text-center">{myCampaign.location}</td>
                                     <td className="p-4 text-center">{myCampaign.runningDistance}</td>
-                                    {/* <td className="p-4 text-center">{myCampaign.description}</td> */}
-                                    {/* <td className="p-4 text-center">{myCampaign.marathonImage}</td> */}
                                     <td className="p-4 text-center">{myCampaign.userEmail}</td>
-                                    {/* <td className="p-4 text-center">{myCampaign.userName}</td> */}
                                     <td className="p-4 text-center">
                                         <div className="flex flex-row justify-center items-center gap-3">
                                             <button
@@ -197,13 +193,13 @@ const MyMarathonList = () => {
                     </table>
                 </div>
             ) : (
-                <p className="text-center text-gray-600">You have no campaigns yet.</p>
+                <p className="text-center text-gray-600">You have no marathons yet.</p>
             )}
 
-            {/* Modal for updating marathon */}
+            {/* Modal for Updating Marathon List */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 px-2">
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto md:overflow-y-auto lg:overflow-hidden">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-y-auto">
                         <h2 className="text-black text-xl font-bold mb-4">Update Campaign</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
