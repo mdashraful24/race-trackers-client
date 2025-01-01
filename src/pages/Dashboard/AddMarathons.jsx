@@ -22,7 +22,7 @@ const AddMarathons = () => {
         const description = form.description.value;
         const marathonImage = form.marathonImage.value;
         const createdAt = new Date();
-        const totalRegistrations = 0;
+        // const totalRegistrations = 0;
 
         const newMarathon = {
             title,
@@ -34,7 +34,7 @@ const AddMarathons = () => {
             description,
             marathonImage,
             createdAt,
-            totalRegistrations,
+            // totalRegistrations,
             userEmail: user?.email,
             userName: user?.displayName,
         };

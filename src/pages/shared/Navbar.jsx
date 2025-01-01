@@ -53,7 +53,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="shadow-md">
+        <div className="shadow-md py-2">
             <div className="navbar container mx-auto">
                 {/* Left: Logo */}
                 <div className="navbar-start">
@@ -104,7 +104,7 @@ const Navbar = () => {
                     {user ? (
                         <div className="relative dropdown-container">
                             <img
-                                className="rounded-full w-12 h-12 object-cover cursor-pointer border p-1 bg-white"
+                                className="rounded-full w-11 h-11 object-cover cursor-pointer p-1 hover:bg-gray-300 "
                                 src={user?.photoURL || "https://via.placeholder.com/40"}
                                 alt="User profile"
                                 onClick={toggleDropdown}
@@ -141,7 +141,7 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
-                <div className="pl-2 md:pl-3">
+                <div className="pl-4 pr-2 md:pl-5">
                     <DarkLightTheme></DarkLightTheme>
                 </div>
             </div>

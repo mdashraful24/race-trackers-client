@@ -2,13 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
     const [myCampaigns, setMyCampaigns] = useState([]);
     // const [loading, setLoading] = useState(true);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
-    const [currentCampaign, setCurrentCampaign] = useState(null); // To store the campaign being updated
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentCampaign, setCurrentCampaign] = useState(null);
+    const axiosSecure = UseAxiosSecure();
+
     const [formData, setFormData] = useState({
         title: "",
         startRegistrationDate: "",
@@ -20,11 +23,22 @@ const MyMarathonList = () => {
         marathonImage: "",
     });
 
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/marathonPage")
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             const userCampaigns = data.filter(campaign => campaign.userEmail === user.email);
+    //             setMyCampaigns(userCampaigns);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching campaigns:", error);
+    //         });
+    // }, [user.email]);
+
     useEffect(() => {
-        fetch("http://localhost:5000/marathonPage")
-            .then((res) => res.json())
-            .then((data) => {
-                const userCampaigns = data.filter(campaign => campaign.userEmail === user.email);
+        axiosSecure.get("/marathonPage")
+            .then((response) => {
+                const userCampaigns = response.data.filter(campaign => campaign.userEmail === user.email);
                 setMyCampaigns(userCampaigns);
             })
             .catch((error) => {

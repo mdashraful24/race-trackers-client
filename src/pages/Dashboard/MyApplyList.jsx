@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
 const MyApplyList = () => {
     const { user } = useContext(AuthContext);
@@ -10,12 +11,26 @@ const MyApplyList = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedRace, setSelectedRace] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
+    const axiosSecure = UseAxiosSecure();
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/myApplyList?title=${searchQuery}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const filterData = data.filter(run => run.userEmail === user.email);
+    //             setApplyingRace(filterData);
+    //             setLoading(false);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching campaigns:", error);
+    //             setLoading(false);
+    //         });
+    // }, [user.email, searchQuery]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myApplyList?title=${searchQuery}`)
-            .then(res => res.json())
-            .then(data => {
-                const filterData = data.filter(run => run.userEmail === user.email);
+        axiosSecure.get(`/myApplyList?title=${searchQuery}`)
+            .then((response) => {
+                const filterData = response.data.filter(run => run.userEmail === user.email);
                 setApplyingRace(filterData);
                 setLoading(false);
             })

@@ -3,18 +3,34 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { IoLocationSharp } from 'react-icons/io5';
+import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 
 const MarathonPage = () => {
     const [marathons, setMarathons] = useState([]);
     const [sortOrder, setSortOrder] = useState('desc');
+    const axiosSecure = UseAxiosSecure();
 
+    // useEffect(() => {
+    //     const fetchMarathons = async () => {
+    //         try {
+    //             const response = await axios.get(`http://localhost:5000/marathonPage`,
+    //                 {
+    //                     params: { sortOrder },
+    //                 });
+    //             setMarathons(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching marathons:', error);
+    //         }
+    //     };
+    //     fetchMarathons();
+    // }, [sortOrder]);
     useEffect(() => {
         const fetchMarathons = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/marathonPage`,
-                    {
-                        params: { sortOrder },
-                    });
+                const response = await axiosSecure.get(`/marathonPage`, {
+                    params: { sortOrder },
+                    // withCredentials: true,
+                });
                 setMarathons(response.data);
             } catch (error) {
                 console.error('Error fetching marathons:', error);
@@ -23,12 +39,13 @@ const MarathonPage = () => {
         fetchMarathons();
     }, [sortOrder]);
 
+
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
     };
 
     return (
-        <div className="px-4 mt-10 mb-20 container mx-auto">
+        <div className="px-4 mt-10 mb-20 container mx-auto min-h-80">
             <Helmet>
                 <title>Marathons | CrowdCube</title>
             </Helmet>

@@ -36,17 +36,17 @@ const Login = () => {
         const password = form.password.value;
         userLogin(email, password)
             .then(result => {
-                const users = result.user;
+                const user = result.user;
 
-                const user = { email: email }
-                axios.post('http://localhost:5000/jwt', user, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data);
-                    })
+                // const user = { email: email }
+                // axios.post('http://localhost:5000/jwt', user, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         console.log(res.data);
+                //     })
 
-                setUser(users);
+                setUser(user);
                 toast.success("Login Successfully!");
                 navigate(location?.state ? location.state : "/");
             })

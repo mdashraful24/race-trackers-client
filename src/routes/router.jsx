@@ -40,8 +40,17 @@ const router = createBrowserRouter([
             {
                 path: "marathons/:id",
                 element: <PrivateRoute><MarathonsDetails></MarathonsDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/marathons/${params.id}`)
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/marathons/${params.id}`, {
+                        method: 'GET',
+                        credentials: 'include',
+                    })
             },
+            // {
+            //     path: "marathons/:id",
+            //     element: <PrivateRoute><MarathonsDetails></MarathonsDetails></PrivateRoute>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/marathons/${params.id}`)
+            // },
             {
                 path: "registrationForm/:id",
                 element: <PrivateRoute><RegistrationForm></RegistrationForm></PrivateRoute>,
