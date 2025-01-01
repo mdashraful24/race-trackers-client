@@ -46,7 +46,7 @@ const UpcomingMarathons = () => {
                 <h2 className="text-base font-bold text-center text-purple-700 mb-3">
                     Events
                 </h2>
-                <h2 className="text-2xl md:text-4xl font-bold text-center text-purple-800 mb-5">
+                <h2 className="text-2xl md:text-5xl font-extrabold text-center text-purple-800 mb-5">
                     Upcoming Marathons Events
                 </h2>
                 <div className="mb-16 h-1 w-36 bg-[#591a6a] mx-auto"></div>

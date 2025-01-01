@@ -8,7 +8,7 @@ const MarathonCards = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://mw-assignments11-server.vercel.app/marathons')
+        fetch('http://localhost:5000/marathons')
             .then(res => res.json())
             .then(data => {
                 setMarathons(data);
@@ -35,7 +35,7 @@ const MarathonCards = () => {
             <h2 className="text-base font-bold text-center text-purple-700 mb-3">
                 Welcome To RaceTrackers
             </h2>
-            <h2 className="text-2xl md:text-4xl font-bold text-center text-purple-800 mb-5">Marathon Programs</h2>
+            <h2 className="text-2xl md:text-5xl font-extrabold text-center text-purple-800 mb-5">Marathon Programs</h2>
             <div className="mb-10 h-1 w-36 bg-[#591a6a] mx-auto"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {

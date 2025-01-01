@@ -104,7 +104,7 @@ const Navbar = () => {
                     {user ? (
                         <div className="relative dropdown-container">
                             <img
-                                className="rounded-full w-11 h-11 object-cover cursor-pointer p-1 hover:bg-gray-300 "
+                                className="rounded-full w-11 h-11 object-cover cursor-pointer p-1 hover:bg-gray-300"
                                 src={user?.photoURL || "https://via.placeholder.com/40"}
                                 alt="User profile"
                                 onClick={toggleDropdown}
