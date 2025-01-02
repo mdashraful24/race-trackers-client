@@ -8,21 +8,26 @@ const MarathonPage = () => {
     const [marathons, setMarathons] = useState([]);
     const [sortOrder, setSortOrder] = useState('desc');
     const axiosSecure = UseAxiosSecure();
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     // Get data
     useEffect(() => {
         const fetchMarathons = async () => {
             try {
+                // const response = await axiosSecure.get(`/marathonPage`, {
+                //     params: { sortOrder },
+                //     withCredentials: true,
+                // });
                 const response = await axiosSecure.get(`/marathonPage`, {
                     params: { sortOrder },
                     withCredentials: true,
                 });
+
                 setMarathons(response.data);
-                setLoading(false);
+                // setLoading(false);
             } catch (error) {
                 console.error('Error fetching marathons:', error);
-                setLoading(false);
+                // setLoading(false);
             }
         };
         fetchMarathons();
@@ -30,17 +35,17 @@ const MarathonPage = () => {
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
-        setLoading(false);
+        // setLoading(false);
     };
 
     // Useful loading
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <span className="loading loading-bars loading-lg"></span>
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="flex justify-center items-center min-h-screen">
+    //             <span className="loading loading-bars loading-lg"></span>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div className="px-4 mt-10 mb-20 container mx-auto min-h-80">

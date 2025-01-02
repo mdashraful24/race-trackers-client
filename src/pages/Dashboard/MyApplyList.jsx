@@ -7,7 +7,7 @@ import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 const MyApplyList = () => {
     const { user } = useContext(AuthContext);
     const [applyingRace, setApplyingRace] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [selectedRace, setSelectedRace] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
@@ -18,11 +18,11 @@ const MyApplyList = () => {
             .then((response) => {
                 const filterData = response.data.filter(run => run.userEmail === user.email);
                 setApplyingRace(filterData);
-                setLoading(false);
+                // setLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching campaigns:", error);
-                setLoading(false);
+                // setLoading(false);
             });
     }, [user.email, searchQuery]);
 
@@ -102,13 +102,13 @@ const MyApplyList = () => {
         setSearchQuery(event.target.value);
     };
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <span className="loading loading-bars loading-lg"></span>
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="flex justify-center items-center min-h-screen">
+    //             <span className="loading loading-bars loading-lg"></span>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">

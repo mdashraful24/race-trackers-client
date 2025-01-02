@@ -24,6 +24,7 @@ const AddMarathons = () => {
         const createdAt = new Date();
         const totalRegistrationCount = 0;
 
+        // Proses new object data
         const newMarathon = {
             title,
             startRegistrationDate,
@@ -63,12 +64,32 @@ const AddMarathons = () => {
         }
 
         // Post to Server
+        // fetch("http://localhost:5000/addMarathons", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(newMarathon),
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         if (data.insertedId) {
+        //             Swal.fire({
+        //                 title: "Success!",
+        //                 text: "Marathon added successfully",
+        //                 icon: "success",
+        //                 confirmButtonText: "Cool",
+        //             });
+        //         }
+        //     });
+
         fetch("http://localhost:5000/addMarathons", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newMarathon),
+            credentials: "include",  // Include cookies/credentials with the request
         })
             .then((res) => res.json())
             .then((data) => {
@@ -80,7 +101,11 @@ const AddMarathons = () => {
                         confirmButtonText: "Cool",
                     });
                 }
+            })
+            .catch((error) => {
+                console.error("Error adding marathon:", error);
             });
+
 
         // Reset form
         form.reset();
