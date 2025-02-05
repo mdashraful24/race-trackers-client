@@ -49,8 +49,8 @@
 
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/mdashraful24/mw-assignments11-client.git
-   cd racetrackers
+   git clone https://github.com/mdashraful24/race-trackers-client.git
+   cd race-trackers-client
    ```
 2. **Install dependencies**
    ```sh
