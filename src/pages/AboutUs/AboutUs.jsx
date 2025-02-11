@@ -35,7 +35,7 @@ const AboutUs = () => {
                             <h2 className="text-base font-bold mb-3">
                                 Welcome To RaceTrackers
                             </h2>
-                            <h2 className="text-2xl md:text-3xl font-extrabold mb-5">
+                            <h2 className="text-xl md:text-3xl font-bold mb-5">
                                 We Are The Best Running Club Since 2022
                             </h2>
                             <div className="mb-5 h-1 w-36 bg-[#591a6a]"></div>

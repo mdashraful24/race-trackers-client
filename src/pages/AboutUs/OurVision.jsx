@@ -8,7 +8,7 @@ const OurVision = () => {
     };
 
     return (
-        <div className="container mx-auto mt-14 mb-8 px-4">
+        <div className="container mx-auto mt-14 md:mb-20 px-4">
             <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 text-justify">
                 {/* vision */}
                 <div>

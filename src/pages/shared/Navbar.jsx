@@ -68,7 +68,7 @@ const Navbar = () => {
         <div className="sticky top-0 shadow-lg py-2 z-50 bg-base-200">
             <div className="navbar container mx-auto px-4">
                 {/* Left: Logo */}
-                <div className="navbar-start md:w-[30%] lg:w-0">
+                <div className="navbar-start md:w-[30%]">
                     <div className="dropdown">
                         <div
                             tabIndex={0}

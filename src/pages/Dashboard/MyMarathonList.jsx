@@ -136,7 +136,7 @@ const MyMarathonList = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80 mb-8">
             {/* Helmet */}
             <Helmet>
                 <title>My Marathon List | RaceTrackers</title>

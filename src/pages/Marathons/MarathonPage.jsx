@@ -87,7 +87,7 @@ const MarathonPage = () => {
     // }
 
     return (
-        <div className="container mx-auto min-h-screen mt-8 md:mt-10 mb-8 md:mb-16 px-4">
+        <div className="container mx-auto min-h-screen mt-8 md:mt-10 mb-16 px-4">
             <Helmet>
                 <title>Marathons | RaceTrackers</title>
             </Helmet>
