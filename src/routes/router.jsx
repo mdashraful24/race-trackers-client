@@ -15,6 +15,8 @@ import RegistrationForm from "../pages/RegistrationForm/RegistrationForm";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyMarathonList from "../pages/Dashboard/MyMarathonList";
 import MyApplyList from "../pages/Dashboard/MyApplyList";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import About from "../pages/AboutUs/About";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
             //         })
             // },
 
+            {
+                path: "about",
+                element: <About></About>
+            },
             {
                 path: "marathonDetails/:id",
                 element: <PrivateRoute><MarathonsDetails /></PrivateRoute>,
