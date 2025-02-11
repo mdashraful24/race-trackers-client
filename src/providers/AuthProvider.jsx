@@ -46,37 +46,71 @@ const AuthProvider = ({ children }) => {
 
     // Auth
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            setLoading(true); // Ensure loading state is set at the start
+            try {
+                if (currentUser?.email) {
+                    const user = { email: currentUser.email };
+
+                    // Request JWT token from the backend
+                    const res = await axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
+                        withCredentials: true,
+                    });
+
+                    // Successfully set the user
+                    setUser(currentUser);
+                } else {
+                    // Logout case: clear token and user state
+                    await axios.post('https://mw-assignments11-server.vercel.app/logout', {}, {
+                        withCredentials: true,
+                    });
+                    setUser(null);
+                }
+            } catch (error) {
+                console.error("Error during authentication state change:", error);
+            } finally {
+                setLoading(false); // End loading state regardless of success or failure
+            }
+        });
+
+        // Cleanup subscription on unmount
+        return () => unSubscribe();
+    }, []);
+
+
+    
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
+    //         setUser(currentUser);
             
-            // console.log('state captures', currentUser?.email)
+    //         // console.log('state captures', currentUser?.email)
 
-            if (currentUser?.email) {
-                const user = { email: currentUser.email };
+    //         if (currentUser?.email) {
+    //             const user = { email: currentUser.email };
 
-                axios.post('http://localhost:5000/jwt', user, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log('login token', res.data);
-                        setLoading(false);
-                    })
-            }
-            else {
-                axios.post('http://localhost:5000/logout', {}, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        // console.log('logout', res.data);
-                        setLoading(false);
-                    })
-            }
-        })
+    //             axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
+    //                 withCredentials: true
+    //             })
+    //                 .then(res => {
+    //                     // console.log('login token', res.data);
+    //                     setLoading(false);
+    //                 })
+    //         }
+    //         else {
+    //             axios.post('https://mw-assignments11-server.vercel.app/logout', {}, {
+    //                 withCredentials: true
+    //             })
+    //                 .then(res => {
+    //                     // console.log('logout', res.data);
+    //                     setLoading(false);
+    //                 })
+    //         }
+    //     })
 
-        return () => {
-            unSubscribe();
-        }
-    }, [])
+    //     return () => {
+    //         unSubscribe();
+    //     }
+    // }, [])
 
     const authInfo = {
         user,

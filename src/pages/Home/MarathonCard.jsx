@@ -42,8 +42,8 @@ const MarathonCard = ({ marathon }) => {
                 {/* Button */}
                 <div className="mt-5">
                     <Link
-                        to={`/marathons/${_id}`}
-                        className="btn text-base text-white border-none font-medium rounded-none w-full transition-all duration-500"
+                        to={`/marathonDetails/${_id}`}
+                        className="btn text-base text-white border-none font-medium w-full transition-all duration-500"
                         style={{
                             background: "linear-gradient(to right, #000066 0%, #660066 100%)",
                         }}

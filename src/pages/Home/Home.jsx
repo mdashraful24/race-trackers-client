@@ -4,6 +4,7 @@ import ExtraSection from "./ExtraSection";
 import MarathonCards from "./MarathonCards";
 import Team from "./Team";
 import UpcomingMarathons from "./UpcomingMarathons";
+import Review from "./Review";
 
 const Home = () => {
     return (
@@ -12,11 +13,12 @@ const Home = () => {
                 <title>Home | RaceTrackers</title>
             </Helmet>
 
-            <Banner></Banner>
-            <MarathonCards></MarathonCards>
-            <UpcomingMarathons></UpcomingMarathons>
-            <Team></Team>
-            <ExtraSection></ExtraSection>
+            <Banner />
+            <MarathonCards />
+            <UpcomingMarathons />
+            <Team />
+            <ExtraSection />
+            <Review />
         </div>
     );
 };

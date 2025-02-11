@@ -32,36 +32,34 @@ const ExtraSection = () => {
     };
 
     return (
-        <div className="mb-20">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12">
-                    <h2 className="text-base font-bold text-center text-purple-700 mb-3">
-                        How it works
-                    </h2>
-                    <h2 className="text-2xl md:text-5xl font-extrabold text-center text-purple-800 mb-5">
-                        Frequently Asked Questions
-                    </h2>
-                    <div className="mb-10 h-1 w-36 bg-[#591a6a] mx-auto"></div>
-                    <div className="space-y-4">
-                        {faqData.map((faq, index) => (
-                            <div key={index} className="p-4 rounded-lg shadow-md hover:shadow-lg">
-                                <button
-                                    className="w-full text-left font-semibold flex items-center"
-                                    onClick={() => toggleFAQ(index)}
-                                >
-                                    <IoTriangle
-                                        className={`mr-2 text-[#591a6a] transform transition-transform duration-200 ${expandedIndex === index ? 'rotate-180' : 'rotate-90'}`}
-                                    />
-                                    <span className="text-xl">{faq.question}</span>
-                                </button>
-                                {expandedIndex === index && (
-                                    <div className="ml-6 mt-2 text-lg">
-                                        {faq.answer}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+        <div className="container mx-auto mt-14 mb-8 md:mt-20 px-4">
+            <div className="mb-12">
+                <h2 className="text-base font-bold text-center mb-3">
+                    How it works
+                </h2>
+                <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-5">
+                    Frequently Asked Questions
+                </h2>
+                <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
+                <div className="space-y-4">
+                    {faqData.map((faq, index) => (
+                        <div key={index} className="p-4 rounded-lg shadow-md hover:shadow-lg">
+                            <button
+                                className="w-full text-left font-semibold flex items-center"
+                                onClick={() => toggleFAQ(index)}
+                            >
+                                <IoTriangle
+                                    className={`mr-2 text-[#591a6a] transform transition-transform duration-200 ${expandedIndex === index ? 'rotate-180' : 'rotate-90'}`}
+                                />
+                                <span className="md:text-xl">{faq.question}</span>
+                            </button>
+                            {expandedIndex === index && (
+                                <div className="ml-6 mt-2 text-md:lg">
+                                    {faq.answer}
+                                </div>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

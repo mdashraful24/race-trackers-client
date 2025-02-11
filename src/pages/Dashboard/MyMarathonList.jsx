@@ -7,7 +7,7 @@ import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
     const [myCampaigns, setMyCampaigns] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentCampaign, setCurrentCampaign] = useState(null);
     const axiosSecure = UseAxiosSecure();
@@ -24,15 +24,15 @@ const MyMarathonList = () => {
     });
 
     useEffect(() => {
-        axiosSecure.get("/marathonPage")
+        axiosSecure.get("/newMarathons")
             .then((response) => {
                 const userCampaigns = response.data.filter(campaign => campaign.userEmail === user.email);
                 setMyCampaigns(userCampaigns);
-                // setLoading(false);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching campaigns:", error);
-                // setLoading(false);
+                setLoading(false);
             });
     }, [user.email]);
 
@@ -47,7 +47,7 @@ const MyMarathonList = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/marathonPage/${_id}`, {
+                fetch(`https://mw-assignments11-server.vercel.app/marathonPage/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -55,7 +55,7 @@ const MyMarathonList = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your campaign has been deleted.",
+                                text: "Your added marathon has been deleted.",
                                 icon: "success",
                             });
                             const remaining = myCampaigns.filter(myCam => myCam._id !== _id);
@@ -99,7 +99,7 @@ const MyMarathonList = () => {
     // Handle Submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/marathonPage/${currentCampaign._id}`, {
+        fetch(`https://mw-assignments11-server.vercel.app/marathonPage/${currentCampaign._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const MyMarathonList = () => {
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Updated!",
-                        text: "Your campaign has been updated.",
+                        text: "Your add marathon has been updated.",
                         icon: "success",
                     });
                     const updatedCampaigns = myCampaigns.map((campaign) =>
@@ -127,13 +127,13 @@ const MyMarathonList = () => {
     };
 
     // Useful Loading
-    // if (loading) {
-    //     return (
-    //         <div className="flex justify-center items-center min-h-screen">
-    //             <span className="loading loading-bars loading-lg"></span>
-    //         </div>
-    //     );
-    // }
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">

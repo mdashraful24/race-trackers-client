@@ -6,7 +6,7 @@ import image3 from '../../../src/assets/slide3.jpg'
 
 const Banner = () => {
     return (
-        <div className="container mx-auto mt-12 md:mt-16 px-5">
+        <div>
             <Carousel
                 infiniteLoop
                 useKeyboardArrows
@@ -22,7 +22,7 @@ const Banner = () => {
                 stopOnHover
                 renderArrowPrev={(clickHandler) => (
                     <button
-                        className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden sm:block"
+                        className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden lg:block"
                         onClick={clickHandler}
                     >
                         &lt;
@@ -30,7 +30,7 @@ const Banner = () => {
                 )}
                 renderArrowNext={(clickHandler) => (
                     <button
-                        className="absolute top-1/2 right-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden sm:block"
+                        className="absolute top-1/2 right-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden lg:block"
                         onClick={clickHandler}
                     >
                         &gt;
@@ -42,9 +42,9 @@ const Banner = () => {
                     <img
                         src={image1}
                         alt="Crowdfunding"
-                        className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
+                        className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4 rounded-xl">
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
                                 Essential Training Tips for Marathon Success
@@ -60,9 +60,9 @@ const Banner = () => {
                     <img
                         src={image2}
                         alt="Community"
-                        className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
+                        className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4 rounded-xl">
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
                                 Must-Have Tips for Race Day Preparation
@@ -78,9 +78,9 @@ const Banner = () => {
                     <img
                         src={image3}
                         alt="Community"
-                        className="w-full h-[250px] md:h-[500px] lg:h-[660px] rounded-xl"
+                        className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center px-4 rounded-xl">
+                    <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center px-4">
                         <div>
                             <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
                                 Post-Race Recovery Strategies for Runners

@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://mw-assignments11-server.vercel.app',
     withCredentials: true,
 });
 
 const UseAxiosSecure = () => {
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
-    // const location = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
         
@@ -21,7 +21,8 @@ const UseAxiosSecure = () => {
                 console.error('Interceptor error:', error?.response || error);
                 if (error.response?.status === 401 || error.response?.status === 403) {
                     logOut()
-                        .then(() => navigate("/login"))
+                        .then(() => navigate(location?.state ? location.state : "/login"))
+                        // .then(() => navigate("/login"))
                         .catch(err => console.error('Logout error:', err));
                 }
                 return Promise.reject(error);

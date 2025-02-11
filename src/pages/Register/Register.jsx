@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -11,6 +11,7 @@ const Register = () => {
     const [error, setError] = useState("");
     const [showPassWord, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     // Handle google signIn
     // const handleGoogleSignInClickReg = () => {
@@ -57,7 +58,8 @@ const Register = () => {
             })
             .then(() => {
                 toast.success("Successfully Registered");
-                navigate("/");
+                // navigate("/");
+                navigate(location?.state ? location.state : "/");
             })
             .catch((error) => {
                 setError("Email has already been used.");

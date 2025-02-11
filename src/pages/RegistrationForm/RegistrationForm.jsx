@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
 import UseAxiosSecure from "../../hooks/UseAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const RegistrationForm = () => {
     // Get the marathon ID from the URL
@@ -27,7 +28,7 @@ const RegistrationForm = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axiosSecure.get(`/marathons/${id}`, {
+                const response = await axiosSecure.get(`/allMarathons/${id}`, {
                     withCredentials: true,
                 });
                 setMarathon(response.data);
@@ -73,7 +74,7 @@ const RegistrationForm = () => {
         };
 
         // Send registration data to the server
-        fetch("http://localhost:5000/registrations", {
+        fetch("https://mw-assignments11-server.vercel.app/registrations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -100,9 +101,13 @@ const RegistrationForm = () => {
     };
 
 
-    // Loading state while waiting for data
+    // Loading state
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
     }
 
     // Handle case where marathon data is not found
@@ -113,7 +118,12 @@ const RegistrationForm = () => {
     const { title, marathonStartDate } = marathon;
 
     return (
-        <div className="container mx-auto px-3 mt-10 md:mt-14 mb-20">
+        <div className="container mx-auto px-4 mt-10 md:mt-14 mb-20">
+            {/* Helmet */}
+            <Helmet>
+                <title>Registration Form | RaceTrackers</title>
+            </Helmet>
+
             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
                 <h2 className="text-3xl md:text-3xl font-bold text-center mb-6 md:mb-10">
                     Registration for "{title}"
@@ -215,160 +225,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-
-
-
-
-// import React, { useContext, useState } from "react";
-// import { toast } from "react-toastify";
-// import Swal from 'sweetalert2';
-// import { AuthContext } from "../../providers/AuthProvider";
-// import { useLoaderData, useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
-
-// const RegistrationForm = () => {
-//     const { user } = useContext(AuthContext);
-//     const { title, marathonStartDate } = useLoaderData();
-//     const [totalRegistrations, setTotalRegistrations] = useState(0);
-//     const navigate = useNavigate();
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-
-//         const form = e.target;
-//         const firstName = form.firstName.value;
-//         const lastName = form.lastName.value;
-//         const number = form.number.value;
-//         const additionalInfo = form.additionalInfo.value;
-
-//         const newRegistration = {
-//             firstName,
-//             lastName,
-//             title,
-//             number,
-//             additionalInfo,
-//             userEmail: user?.email,
-//             marathonStartDate
-//         };
-
-//         if (!firstName || !lastName || !title || !number || !additionalInfo) {
-//             toast.error("All fields are required!");
-//             return;
-//         }
-
-//         fetch("http://localhost:5000/registrations", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify(newRegistration),
-//         })
-//             .then((res) => res.json())
-//             .then((data) => {
-//                 if (data.insertedId) {
-//                     setTotalRegistrations(prevCount => prevCount + 1);
-
-//                     Swal.fire({
-//                         title: "Success!",
-//                         text: "Registration added successfully",
-//                         icon: "success",
-//                         confirmButtonText: "Cool",
-//                     }).then(() => {
-//                         navigate("/dashboard/myApplyList");
-//                     });
-//                 }
-//             });
-
-//         form.reset();
-//     };
-
-//     return (
-//         <div className="px-3 mt-10 md:mt-14 mb-20">
-//             <Helmet>
-//                 <title>Registration | RaceTrackers</title>
-//             </Helmet>
-
-//             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
-//                 <h2 className="text-3xl md:text-3xl font-bold text-center mb-6 md:mb-10">Registration for "{title}"</h2>
-//                 <form onSubmit={handleSubmit}>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Email</label>
-//                         <input
-//                             type="email"
-//                             value={user?.email || ""}
-//                             readOnly
-//                             className="w-full p-3 border rounded-lg"
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Marathon Title</label>
-//                         <input
-//                             type="text"
-//                             value={title}
-//                             readOnly
-//                             className="w-full p-3 border rounded-lg"
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Start Date</label>
-//                         <input
-//                             type="text"
-//                             value={new Date(marathonStartDate).toLocaleDateString()}
-//                             className="w-full p-3 border rounded-lg"
-//                             readOnly
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">First Name</label>
-//                         <input
-//                             type="text"
-//                             name="firstName"
-//                             className="w-full p-3 border rounded-lg"
-//                             placeholder="First Name"
-//                             required
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Last Name</label>
-//                         <input
-//                             type="text"
-//                             name="lastName"
-//                             className="w-full p-3 border rounded-lg"
-//                             placeholder="Last Name"
-//                             required
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Contact Number</label>
-//                         <input
-//                             type="text"
-//                             name="number"
-//                             className="w-full p-3 border rounded-lg"
-//                             placeholder="Contact Number"
-//                             required
-//                         />
-//                     </div>
-//                     <div className="form-group mb-4">
-//                         <label className="block mb-2">Additional Info</label>
-//                         <textarea
-//                             name="additionalInfo"
-//                             className="w-full p-3 border rounded-lg resize-none"
-//                             placeholder="Additional Info"
-//                             rows="4"
-//                             required
-//                         ></textarea>
-//                     </div>
-//                     <button
-//                         type="submit"
-//                         className="btn w-full bg-green-600 text-base text-white py-3 rounded-lg hover:bg-green-700 transition-all duration-500"
-//                     >
-//                         Submit Now
-//                     </button>
-//                 </form>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default RegistrationForm;

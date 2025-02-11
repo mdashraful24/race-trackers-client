@@ -1,16 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
 const AddMarathons = () => {
     const { user } = useContext(AuthContext);
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const axiosSecure = UseAxiosSecure();
+
+    // Simulate loading delay
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Handle Form
     const handleSubmit = (e) => {
@@ -64,7 +75,7 @@ const AddMarathons = () => {
         }
 
         // Post to Server
-        // fetch("http://localhost:5000/addMarathons", {
+        // fetch("https://mw-assignments11-server.vercel.app/addMarathons", {
         //     method: "POST",
         //     headers: {
         //         "Content-Type": "application/json",
@@ -83,17 +94,38 @@ const AddMarathons = () => {
         //         }
         //     });
 
-        fetch("http://localhost:5000/addMarathons", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newMarathon),
-            credentials: "include",  // Include cookies/credentials with the request
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.insertedId) {
+        // fetch("https://mw-assignments11-server.vercel.app/addMarathons", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(newMarathon),
+        //     credentials: "include",  // Include cookies/credentials with the request
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         if (data.insertedId) {
+        //             Swal.fire({
+        //                 title: "Success!",
+        //                 text: "Marathon added successfully",
+        //                 icon: "success",
+        //                 confirmButtonText: "Cool",
+        //             });
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error adding marathon:", error);
+        //     });
+
+        axiosSecure
+            .post("https://mw-assignments11-server.vercel.app/addMarathons", newMarathon, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            })
+            .then((response) => {
+                if (response.data.insertedId) {
                     Swal.fire({
                         title: "Success!",
                         text: "Marathon added successfully",
@@ -113,6 +145,14 @@ const AddMarathons = () => {
         setEndRegistrationDate(null);
         setMarathonStartDate(null);
     };
+
+    if (loading) {
+        return (
+            <div className="flex min-h-screen justify-center items-center">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-80">
@@ -174,6 +214,18 @@ const AddMarathons = () => {
                             required
                         />
                     </div>
+                </div>
+
+                {/* Created Time */}
+                <div className="form-group mb-4">
+                    <label className="block mb-2">Created At</label>
+                    <input
+                        type="text"
+                        name="createdAt"
+                        value={new Date().toISOString()}
+                        className="w-full p-3 border rounded-lg cursor-not-allowed"
+                        readOnly
+                    />
                 </div>
 
                 {/* Location */}

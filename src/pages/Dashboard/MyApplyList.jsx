@@ -7,7 +7,7 @@ import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 const MyApplyList = () => {
     const { user } = useContext(AuthContext);
     const [applyingRace, setApplyingRace] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [selectedRace, setSelectedRace] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
@@ -18,11 +18,11 @@ const MyApplyList = () => {
             .then((response) => {
                 const filterData = response.data.filter(run => run.userEmail === user.email);
                 setApplyingRace(filterData);
-                // setLoading(false);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching campaigns:", error);
-                // setLoading(false);
+                setLoading(false);
             });
     }, [user.email, searchQuery]);
 
@@ -38,7 +38,7 @@ const MyApplyList = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/myApplyList/${_id}`, {
+                    fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${_id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -46,7 +46,7 @@ const MyApplyList = () => {
                             if (data.deletedCount > 0) {
                                 Swal.fire({
                                     title: "Deleted!",
-                                    text: "Your campaign has been deleted.",
+                                    text: "Your registration details has been deleted.",
                                     icon: "success"
                                 });
                                 const remaining = applyingRace.filter(myRace => myRace._id !== _id);
@@ -71,7 +71,7 @@ const MyApplyList = () => {
             additionalInfo: event.target.additionalInfo.value,
         };
 
-        fetch(`http://localhost:5000/myApplyList/${selectedRace._id}`, {
+        fetch(`https://mw-assignments11-server.vercel.app/myApplyList/${selectedRace._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -102,13 +102,13 @@ const MyApplyList = () => {
         setSearchQuery(event.target.value);
     };
 
-    // if (loading) {
-    //     return (
-    //         <div className="flex justify-center items-center min-h-screen">
-    //             <span className="loading loading-bars loading-lg"></span>
-    //         </div>
-    //     );
-    // }
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-8 min-h-80">
@@ -135,10 +135,10 @@ const MyApplyList = () => {
                         <thead>
                             <tr className="border-b border-gray-400 uppercase tracking-wider">
                                 <th className="p-4 text-center">No.</th>
-                                <th className="p-4 text-center">First Name</th>
-                                <th className="p-4 text-center">Last Name</th>
                                 <th className="p-4 text-center">Title</th>
                                 <th className="p-4 text-center">Marathon Start</th>
+                                <th className="p-4 text-center">First Name</th>
+                                <th className="p-4 text-center">Last Name</th>
                                 <th className="p-4 text-center">Number</th>
                                 <th className="p-4 text-center">Additional Info</th>
                                 <th className="p-4 text-center">Actions</th>
@@ -148,10 +148,10 @@ const MyApplyList = () => {
                             {applyingRace?.map((race, index) => (
                                 <tr key={race._id} className="border-b border-gray-400 hover:bg-stone-100 hover:text-slate-900">
                                     <td className="px-6 py-4 text-center">{index + 1}</td>
-                                    <td className="p-4 text-center">{race.firstName}</td>
-                                    <td className="p-4 text-center capitalize">{race.lastName}</td>
                                     <td className="p-4 text-center">{race.title}</td>
                                     <td className="p-4 text-center">{new Date(race.marathonStartDate).toLocaleDateString()}</td>
+                                    <td className="p-4 text-center">{race.firstName}</td>
+                                    <td className="p-4 text-center capitalize">{race.lastName}</td>
                                     <td className="p-4 text-center">{race.number}</td>
                                     <td className="p-4 text-center">{race.additionalInfo}</td>
                                     <td className="p-4 text-center">
@@ -194,7 +194,7 @@ const MyApplyList = () => {
                                     type="email"
                                     value={user.email}
                                     readOnly
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md cursor-not-allowed"
                                 />
                             </div>
                             <div className="mb-4">
@@ -205,7 +205,7 @@ const MyApplyList = () => {
                                     type="text"
                                     value={selectedRace?.title}
                                     readOnly
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md cursor-not-allowed"
                                 />
                             </div>
                             <div className="mb-4">
@@ -216,7 +216,7 @@ const MyApplyList = () => {
                                     type="text"
                                     value={new Date(selectedRace?.marathonStartDate).toLocaleDateString()}
                                     readOnly
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md cursor-not-allowed"
                                 />
                             </div>
                             <div className="mb-4">

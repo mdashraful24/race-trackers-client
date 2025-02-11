@@ -6,7 +6,7 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row justify-center container mx-auto pt-8 pb-16 lg:py-20 md:pt-8 md:pb-20">
             {/* Sidebar with NavLinks */}
             <div className='mb-10'>
-                <aside className="md:p-4 rounded-md shadow-md lg:border">
+                <aside className="py-3 md:p-4 lg:rounded-md shadow-md lg:border">
                     <ul className="lg:space-y-4 flex lg:flex-col md:justify-center md:items-center px-2">
                         <li>
                             <NavLink

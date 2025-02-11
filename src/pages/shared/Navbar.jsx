@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProvider";
-import siteLogo from "../../../src/assets/logo.png"
+import siteLogo from "../../../src/assets/logo.png";
 import DarkLightTheme from "./DarkLightTheme";
 
 const Navbar = () => {
@@ -41,27 +41,39 @@ const Navbar = () => {
         };
     }, []);
 
+    // Scroll to Home Section
+    const scrollToHome = () => {
+        navigate("/");
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+    };
+
     // Links
     const links = (
         <>
             <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/about">About Us</NavLink></li>
             <li><NavLink to="/marathonsPage">Marathons</NavLink></li>
             {user && (
                 <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            )}
+            {user && (
+                <li><NavLink to="/blogs">Blogs</NavLink></li>
             )}
         </>
     );
 
     return (
-        <div className="shadow-md py-2">
-            <div className="navbar container mx-auto">
+        <div className="sticky top-0 shadow-lg py-2 z-50 bg-base-200">
+            <div className="navbar container mx-auto px-4">
                 {/* Left: Logo */}
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div
                             tabIndex={0}
                             role="button"
-                            className="btn btn-ghost lg:hidden"
+                            className="btn btn-ghost md:hidden pl-0"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -86,25 +98,25 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="flex items-center">
-                        <a
-                            href="/"
+                        <button
+                            onClick={scrollToHome}
                             className="md:text-2xl font-bold flex items-center gap-2"
                         >
-                            <img src={siteLogo} alt="siteLogo" className="w-12" />
-                            <p className="hidden md:block">RaceTrackers</p>
-                        </a>
+                            <img src={siteLogo} alt="siteLogo" className="hidden lg:block w-10 md:w-12" />
+                            <p className="hidden md:block text-xl md:text-2xl lg:text-3xl cursor-pointer">RaceTrackers</p>
+                        </button>
                     </div>
                 </div>
 
                 {/* Right: Auth Links */}
-                <div className="navbar-end">
-                    <div className="navbar-end hidden lg:flex">
-                        <ul className="menu menu-horizontal gap-2 px-3">{links}</ul>
+                <div className="navbar-end w-full">
+                    <div className="hidden md:block lg:flex">
+                        <ul className="menu menu-horizontal flex-nowrap">{links}</ul>
                     </div>
                     {user ? (
-                        <div className="relative dropdown-container">
+                        <div className="relative dropdown-container pl-2 pr-2">
                             <img
-                                className="rounded-full w-11 h-11 object-cover cursor-pointer p-1 hover:bg-gray-300"
+                                className="rounded-full w-9 md:w-11 h-9 md:h-11 object-cover cursor-pointer p-1 hover:bg-gray-300"
                                 src={user?.photoURL || "https://via.placeholder.com/40"}
                                 alt="User profile"
                                 onClick={toggleDropdown}
@@ -114,7 +126,7 @@ const Navbar = () => {
                                     <ul>
                                         <li>
                                             <button
-                                                className="block w-full py-2 rounded-lg bg-zinc-700 font-semibold text-white hover:bg-[#2d0c36]"
+                                                className="block w-full py-2 rounded-md bg-zinc-800 font-semibold text-white hover:bg-red-700"
                                                 onClick={handleSignOut}
                                             >
                                                 Logout
@@ -125,23 +137,23 @@ const Navbar = () => {
                             )}
                         </div>
                     ) : (
-                        <div className="flex space-x-3">
+                        <div className="flex gap-2">
                             <Link
                                 to="/login"
-                                className="btn btn-sm"
+                                className="btn btn-sm bg-blue-500 text-white"
                             >
                                 Login
                             </Link>
                             <Link
                                 to="/register"
-                                className="btn btn-sm"
+                                className="btn btn-sm bg-green-500 text-white"
                             >
                                 Register
                             </Link>
                         </div>
                     )}
                 </div>
-                <div className="pl-4 pr-2 md:pl-5">
+                <div className="lg:pl-2">
                     <DarkLightTheme></DarkLightTheme>
                 </div>
             </div>
