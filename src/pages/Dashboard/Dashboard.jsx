@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
     return (
         <div className="flex flex-col lg:flex-row justify-center container mx-auto mt-5 lg:mt-14 mb-8 px-4 min-h-screen">
             {/* Sidebar with NavLinks */}

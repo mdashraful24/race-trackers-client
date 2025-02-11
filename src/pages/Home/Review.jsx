@@ -55,12 +55,12 @@ const Review = () => {
                                         />
 
                                         {/* User Name */}
-                                        <h3 className="text-xl font-semibold text-gray-800">{review.name}</h3>
+                                        <h3 className="text-xl font-semibold">{review.name}</h3>
 
                                         {/* Quote and Description */}
                                         <div className="flex justify-center gap-1 text-center">
                                             <FontAwesomeIcon icon={faQuoteLeft} />
-                                            <p className="text-sm sm:text-base md:text-lg text-gray-600">
+                                            <p className="text-sm sm:text-base md:text-lg">
                                                 {review.details}
                                             </p>
                                         </div>

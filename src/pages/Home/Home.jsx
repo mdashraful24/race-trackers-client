@@ -8,6 +8,9 @@ import Review from "./Review";
 // import Welcome from "./Welcome";
 
 const Home = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
     return (
         <div>
             <Helmet>

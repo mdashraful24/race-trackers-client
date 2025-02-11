@@ -39,7 +39,7 @@ const UpcomingMarathons = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {marathons.map((marathon) => (
                     <div
-                        key={marathon.id}
+                        key={marathon._id}
                         className="relative shadow-lg rounded-xl p-5 overflow-hidden border"
                     >
                         {/* Image */}

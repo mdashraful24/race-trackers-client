@@ -14,11 +14,11 @@ const Sponsors = () => {
     });
 
     if (isLoading) {
-        return <div>Loading sponsors...</div>;
-    }
-
-    if (isError) {
-        return <div>Error fetching sponsors</div>;
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
     }
 
     return (
