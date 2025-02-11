@@ -31,11 +31,11 @@ const MarathonCards = () => {
     }
 
     return (
-        <div className="container mx-auto mt-14 mb-8 md:mt-20 px-4">
+        <div className="container mx-auto mt-14 mb-8 md:mt-24 px-4">
             <h2 className="text-base font-bold text-center mb-3">
                 Welcome To RaceTrackers
             </h2>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-5">Marathon Programs</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-5">Marathon Programs</h2>
             <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {

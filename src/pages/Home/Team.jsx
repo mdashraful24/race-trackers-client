@@ -24,19 +24,19 @@ const Team = () => {
     if (isError) return <p className="text-center text-lg font-semibold mb-8">No data available at the moment. Check back later!</p>;
 
     return (
-        <div className="container mx-auto text-center mt-14 mb-8 md:mt-20 px-4">
+        <div className="container mx-auto text-center mt-14 mb-8 md:mt-24 px-4">
             {/* Title */}
             <h2 className="text-base font-bold text-center mb-3">
                 Meet the Team
             </h2>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-7">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-7">
                 Our Expert Members
             </h2>
             <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
                 {members.map(member => (
-                    <div key={member._id} className="relative rounded-lg shadow-lg overflow-hidden group">
+                    <div key={member._id} className="relative rounded-xl shadow-lg overflow-hidden group">
 
                         {/* Image Section with Zoom Effect */}
                         <div className="overflow-hidden">

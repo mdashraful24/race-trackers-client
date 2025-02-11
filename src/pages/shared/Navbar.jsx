@@ -103,7 +103,7 @@ const Navbar = () => {
                             className="md:text-2xl font-bold flex items-center gap-2"
                         >
                             <img src={siteLogo} alt="siteLogo" className="hidden lg:block w-10 md:w-12" />
-                            <p className="hidden md:block text-xl md:text-2xl lg:text-3xl cursor-pointer">RaceTrackers</p>
+                            <p className="md:text-2xl lg:text-3xl cursor-pointer">RaceTrackers</p>
                         </button>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal flex-nowrap">{links}</ul>
                     </div>
                     {user ? (
-                        <div className="relative dropdown-container pl-2 pr-2">
+                        <div className="relative dropdown-container pr-2">
                             <img
                                 className="rounded-full w-9 md:w-11 h-9 md:h-11 object-cover cursor-pointer p-1 hover:bg-gray-300"
                                 src={user?.photoURL || "https://via.placeholder.com/40"}

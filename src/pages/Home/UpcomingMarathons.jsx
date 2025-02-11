@@ -23,12 +23,12 @@ const UpcomingMarathons = () => {
     if (isError) return <p className="text-center text-lg font-semibold mb-8">No upcoming events available at the moment. Check back later!</p>;
 
     return (
-        <div className="container mx-auto mt-14 mb-8 md:mt-20 px-4">
+        <div className="container mx-auto mt-14 mb-8 md:mt-24 px-4">
             {/* Title and Subtitle */}
             <h2 className="text-base font-bold text-center mb-3">
                 Events
             </h2>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-5">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-5">
                 Upcoming Marathon Events
             </h2>
 
@@ -40,7 +40,7 @@ const UpcomingMarathons = () => {
                 {marathons.map((marathon) => (
                     <div
                         key={marathon.id}
-                        className="relative shadow-lg rounded-lg p-5 overflow-hidden border"
+                        className="relative shadow-lg rounded-xl p-5 overflow-hidden border"
                     >
                         {/* Image */}
                         <img

@@ -24,11 +24,11 @@ const Review = () => {
     }, [axiosPublic]);
 
     return (
-        <div className="container mx-auto mt-14 mb-20 md:mt-20 px-4">
+        <div className="container mx-auto mt-14 mb-20 md:mt-24 px-4">
             <h2 className="text-base font-bold text-center mb-3">
                 Feedback
             </h2>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-5">What Our Users Say</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-5">What Our Users Say</h2>
             <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
 
             <div className="mt-10 md:mt-16">
@@ -58,7 +58,7 @@ const Review = () => {
                                         <h3 className="text-xl font-semibold text-gray-800">{review.name}</h3>
 
                                         {/* Quote and Description */}
-                                        <div className="flex justify-center gap-1 text-center px-16">
+                                        <div className="flex justify-center gap-1 text-center">
                                             <FontAwesomeIcon icon={faQuoteLeft} />
                                             <p className="text-sm sm:text-base md:text-lg text-gray-600">
                                                 {review.details}

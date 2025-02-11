@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { IoTriangle } from "react-icons/io5";
 
 const ExtraSection = () => {
@@ -26,18 +26,33 @@ const ExtraSection = () => {
     ];
 
     const [expandedIndex, setExpandedIndex] = useState(null);
+    const faqRef = useRef(null);
 
     const toggleFAQ = (index) => {
         setExpandedIndex(expandedIndex === index ? null : index);
     };
 
+    // Close the expanded question when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (faqRef.current && !faqRef.current.contains(event.target)) {
+                setExpandedIndex(null);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="container mx-auto mt-14 mb-8 md:mt-20 px-4">
+        <div className="container mx-auto mt-14 mb-8 md:mt-24 px-4" ref={faqRef}>
             <div className="mb-12">
                 <h2 className="text-base font-bold text-center mb-3">
                     How it works
                 </h2>
-                <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-5">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-5">
                     Frequently Asked Questions
                 </h2>
                 <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
@@ -46,7 +61,10 @@ const ExtraSection = () => {
                         <div key={index} className="p-4 rounded-lg shadow-md hover:shadow-lg">
                             <button
                                 className="w-full text-left font-semibold flex items-center"
-                                onClick={() => toggleFAQ(index)}
+                                onClick={(e) => {
+                                    e.stopPropagation(); // Prevent closing on button click
+                                    toggleFAQ(index);
+                                }}
                             >
                                 <IoTriangle
                                     className={`mr-2 text-[#591a6a] transform transition-transform duration-200 ${expandedIndex === index ? 'rotate-180' : 'rotate-90'}`}

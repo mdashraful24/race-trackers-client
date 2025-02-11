@@ -5,6 +5,7 @@ import MarathonCards from "./MarathonCards";
 import Team from "./Team";
 import UpcomingMarathons from "./UpcomingMarathons";
 import Review from "./Review";
+// import Welcome from "./Welcome";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             </Helmet>
 
             <Banner />
+            {/* <Welcome /> */}
             <MarathonCards />
             <UpcomingMarathons />
             <Team />
