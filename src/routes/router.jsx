@@ -17,6 +17,7 @@ import MyMarathonList from "../pages/Dashboard/MyMarathonList";
 import MyApplyList from "../pages/Dashboard/MyApplyList";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import About from "../pages/AboutUs/About";
+import Services from "../pages/Services/Services";
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
                         element: <MyApplyList></MyApplyList>
                     }
                 ]
+            },
+            {
+                path: "services",
+                element: <Services></Services>
             }
         ]
     },

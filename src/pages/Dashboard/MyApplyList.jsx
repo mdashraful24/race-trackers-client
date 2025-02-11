@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import UseAxiosSecure from "../../hooks/UseAxiosSecure";
+import { FaSearch } from 'react-icons/fa';
 
 const MyApplyList = () => {
     const { user } = useContext(AuthContext);
@@ -118,14 +119,15 @@ const MyApplyList = () => {
             </Helmet>
 
             {/* Search Input */}
-            <div className="mb-4">
+            <div className="mb-4 max-w-lg mx-auto relative">
                 <input
                     type="text"
                     placeholder="Search by marathon event title"
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                    className="w-full pl-4 pr-12 py-2 border border-gray-300 rounded-md"
                 />
+                <FaSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             </div>
 
             {/* Apply List */}

@@ -59,7 +59,7 @@ const Navbar = () => {
                 <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             )}
             {user && (
-                <li><NavLink to="/blogs">Blogs</NavLink></li>
+                <li><NavLink to="/services">Services</NavLink></li>
             )}
         </>
     );

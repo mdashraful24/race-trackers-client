@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <div className="flex flex-col lg:flex-row justify-center container mx-auto pt-8 pb-16 lg:py-20 md:pt-8 md:pb-20">
+        <div className="flex flex-col lg:flex-row justify-center container mx-auto mt-5 lg:mt-14 mb-8 px-4 min-h-screen">
             {/* Sidebar with NavLinks */}
             <div className='mb-10'>
                 <aside className="py-3 md:p-4 lg:rounded-md shadow-md lg:border">

@@ -12,10 +12,13 @@ const MarathonPage = () => {
     const [showSorting, setShowSorting] = useState(false);
     const [sortOrder, setSortOrder] = useState('newest');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 9;
 
     // Fetch data using Promises
     useEffect(() => {
+        // Scroll to the top when the component mounts
+        window.scrollTo(0, 0);
+        
         setShowLoading(true);
         setTimeout(() => setShowLoading(false), 1000);
 
@@ -75,39 +78,40 @@ const MarathonPage = () => {
         );
     }
 
-    if (sorting && showSorting) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <span className="loading loading-bars loading-lg"></span>
-            </div>
-        );
-    }
+    // if (sorting && showSorting) {
+    //     return (
+    //         <div className="flex justify-center items-center min-h-screen">
+    //             <span className="loading loading-bars loading-lg"></span>
+    //         </div>
+    //     );
+    // }
 
     return (
-        <div className="px-4 mt-10 mb-20 container mx-auto min-h-80">
+        <div className="container mx-auto min-h-screen mt-8 md:mt-10 mb-8 md:mb-16 px-4">
             <Helmet>
                 <title>Marathons | RaceTrackers</title>
             </Helmet>
 
             {/* Title */}
-            <h2 className="text-3xl md:text-5xl font-bold text-center text-purple-800 mb-5 md:mb-7">All Marathon Events</h2>
-            <div className="mb-10 h-1 w-36 bg-[#591a6a] mx-auto"></div>
+            <h2 className="text-2xl md:text-4xl font-bold text-center mb-5 md:mb-7">All Marathon Events</h2>
+            <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
 
             {/* Sort Options */}
-            <div className="flex justify-end mb-6">
+            <div className="flex justify-end mb-5">
                 <button
                     onClick={() => setSortOrder('newest')}
-                    className={`btn ${sortOrder === 'newest' ? 'bg-purple-700 text-white' : ''} mr-2`}
+                    className={`transition-all duration-300 py-2 px-6 rounded-l-xl border-2 ${sortOrder === 'newest' ? 'bg-purple-700 text-white border-purple-700' : 'bg-white text-purple-700 border-purple-300 hover:border-purple-500'} font-semibold`}
                 >
                     Newest
                 </button>
                 <button
                     onClick={() => setSortOrder('oldest')}
-                    className={`btn ${sortOrder === 'oldest' ? 'bg-purple-700 text-white' : ''}`}
+                    className={`transition-all duration-300 py-2 px-6 rounded-r-xl border-2 ${sortOrder === 'oldest' ? 'bg-purple-700 text-white border-purple-700' : 'bg-white text-purple-700 border-purple-300 hover:border-purple-500'} font-semibold`}
                 >
                     Oldest
                 </button>
             </div>
+
 
             {/* Marathon Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
