@@ -8,11 +8,11 @@ const OurVision = () => {
     };
 
     return (
-        <div className="container mx-auto mt-14 md:mb-20 px-4">
+        <div className="container mx-auto md:mb-20 px-4">
             <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20 text-justify">
                 {/* vision */}
                 <div>
-                    <h2 className="text-2xl font-extrabold mb-3">
+                    <h2 className="text-2xl font-bold mb-3">
                         Our Vision
                     </h2>
                     <div className="mb-5 h-1 w-36 bg-[#591a6a]"></div>
@@ -26,7 +26,7 @@ const OurVision = () => {
 
                 {/* mission */}
                 <div>
-                    <h2 className="text-2xl font-extrabold mb-3">
+                    <h2 className="text-2xl font-bold mb-3">
                         Our Mission
                     </h2>
                     <div className="mb-5 h-1 w-36 bg-[#591a6a]"></div>

@@ -20,7 +20,7 @@ const MarathonsDetails = () => {
     useEffect(() => {
         // Scroll to the top when the component mounts
         window.scrollTo(0, 0);
-        
+
         const fetchMarathonData = async () => {
             try {
                 const response = await axiosSecure.get(`/allMarathons/${id}`);
@@ -105,10 +105,13 @@ const MarathonsDetails = () => {
 
                 <div className="flex flex-col lg:flex-row justify-center lg:gap-10">
                     <div>
-                        <img src={marathonImage} alt={title} className="w-full md:h-[500px] p-6" />
+                        <div className="p-4 lg:p-6">
+
+                            <img src={marathonImage} alt={title} className="w-full h-auto lg:w-[900px] lg:h-[460px] rounded-xl" />
+                        </div>
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-4 lg:p-6">
                         <h1 className="text-xl md:text-3xl font-bold text-center text-purple-800 mb-4">{title}</h1>
 
                         {/* Description */}
@@ -183,7 +186,7 @@ const MarathonsDetails = () => {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     );

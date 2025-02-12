@@ -1,5 +1,6 @@
-import { Moon, Sun } from "lucide-react";
 import useTheme from "../../hooks/useTheme";
+import { IoMoonSharp } from "react-icons/io5";
+import { MdWbSunny } from "react-icons/md";
 
 export function DarkLightTheme() {
     const { theme, toggleTheme } = useTheme();
@@ -11,9 +12,9 @@ export function DarkLightTheme() {
             aria-label="Toggle theme"
         >
             {theme === "light" ? (
-                <Moon className="w-5 h-5" />
+                <MdWbSunny className="w-5 h-5 text-yellow-500" />
             ) : (
-                <Sun className="w-5 h-5" />
+                <IoMoonSharp className="w-5 h-5" />
             )}
         </button>
     );

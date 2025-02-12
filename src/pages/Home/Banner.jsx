@@ -46,10 +46,10 @@ const Banner = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
                         <div>
-                            <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
+                            <h2 className="text-lg md:text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Essential Training Tips for Marathon Success
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                            <p className="text-white text-sm md:text-lg md:w-4/5 lg:w-2/3 mx-auto">
                                 Get ready for race day with our expert training advice. Build endurance and strength to ensure you perform your best.
                             </p>
                         </div>
@@ -64,10 +64,10 @@ const Banner = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
                         <div>
-                            <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
+                            <h2 className="text-lg md:text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Must-Have Tips for Race Day Preparation
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                            <p className="text-white text-sm md:text-lg md:w-4/5 lg:w-2/3 mx-auto">
                                 Learn what to bring and how to prepare for a smooth race experience. From hydration to clothing, we’ve got you covered.
                             </p>
                         </div>
@@ -82,10 +82,10 @@ const Banner = () => {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
                         <div>
-                            <h2 className="text-xl sm:text-4xl font-bold text-white mb-4">
+                            <h2 className="text-lg md:text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Post-Race Recovery Strategies for Runners
                             </h2>
-                            <p className="text-white text-sm sm:text-lg md:w-4/5 lg:w-2/3 mx-auto">
+                            <p className="text-white text-sm md:text-lg md:w-4/5 lg:w-2/3 mx-auto">
                                 Recover effectively after your marathon with our recovery tips. Focus on nutrition and stretching to aid in muscle recovery.
                             </p>
                         </div>
