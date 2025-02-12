@@ -46,7 +46,7 @@ const UpcomingMarathons = () => {
                         <img
                             src={marathon.image}
                             alt={marathon.title}
-                            className="w-full h-48 object-cover rounded-lg mb-4"
+                            className="w-full h-60 object-cover rounded-lg mb-4"
                         />
                         {/* Overlay for "Upcoming" text */}
                         <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center text-purple-500 text-2xl font-bold opacity-0 hover:opacity-100 transition-opacity duration-300">
