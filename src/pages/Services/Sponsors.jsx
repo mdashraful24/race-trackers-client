@@ -33,7 +33,7 @@ const Sponsors = () => {
 
             {/* Marquee for Sponsors */}
             <div className="flex items-center gap-3 bg-base-200 p-2">
-                <p className="bg-purple-600 text-base-100 px-3 py-1">Sponsors</p>
+                <p className="bg-purple-600 text-white px-3 py-1">Sponsors</p>
                 <Marquee pauseOnHover={true} speed={100} className="space-x-10">
                     {sponsors.map((sponsor) => (
                         <div key={sponsor._id} className="flex-shrink-0 mx-4">

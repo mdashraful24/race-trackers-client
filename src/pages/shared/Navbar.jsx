@@ -56,16 +56,16 @@ const Navbar = () => {
             <li><NavLink to="/about">About Us</NavLink></li>
             <li><NavLink to="/marathonsPage">Marathons</NavLink></li>
             {user && (
-                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                <li><NavLink to="/services">Services</NavLink></li>
             )}
             {user && (
-                <li><NavLink to="/services">Services</NavLink></li>
+                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             )}
         </>
     );
 
     return (
-        <div className="sticky top-0 shadow-lg py-2 z-50 bg-base-200">
+        <div className="sticky top-0 shadow-lg py-2 z-50 dark:text-white bg-gradient-to-r from-purple-700 to-purple-800">
             <div className="navbar container mx-auto px-4">
                 {/* Left: Logo */}
                 <div className="navbar-start md:w-[30%]">
@@ -77,7 +77,7 @@ const Navbar = () => {
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
+                                className="h-5 w-5 text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -92,7 +92,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                            className="menu menu-sm dropdown-content bg-base-100 dark:bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
                             {links}
                         </ul>
@@ -103,7 +103,7 @@ const Navbar = () => {
                             className="md:text-2xl font-bold flex items-center gap-2"
                         >
                             <img src={siteLogo} alt="siteLogo" className="w-10 md:w-12" />
-                            <p className="hidden md:block md:text-xl lg:text-3xl cursor-pointer">RaceTrackers</p>
+                            <p className="hidden md:block md:text-xl lg:text-3xl text-white cursor-pointer">RaceTrackers</p>
                         </button>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ const Navbar = () => {
                 {/* Right: Auth Links */}
                 <div className="navbar-end w-full">
                     <div className="hidden md:block lg:flex">
-                        <ul className="menu menu-horizontal flex-nowrap">{links}</ul>
+                        <ul className="menu menu-horizontal lg:text-base text-white flex-nowrap">{links}</ul>
                     </div>
                     {user ? (
                         <div className="relative dropdown-container pr-2">
@@ -140,20 +140,20 @@ const Navbar = () => {
                         <div className="flex gap-2">
                             <Link
                                 to="/login"
-                                className="btn btn-sm bg-blue-500 text-white hover:text-black"
+                                className="btn btn-sm bg-blue-500 text-white hover:text-black hover:dark:text-white border-none"
                             >
                                 Login
                             </Link>
                             <Link
                                 to="/register"
-                                    className="btn btn-sm mr-2 bg-green-500 text-white hover:text-black"
+                                    className="btn btn-sm mr-2 bg-green-500 text-white hover:text-black hover:dark:text-white border-none"
                             >
                                 Register
                             </Link>
                         </div>
                     )}
                 </div>
-                <div className="lg:pl-2">
+                <div className="lg:pl-2 text-white">
                     <DarkLightTheme></DarkLightTheme>
                 </div>
             </div>

@@ -3,14 +3,16 @@ import about from '../../assets/about.jpg';
 
 const AboutUs = () => {
     return (
-        <div
-            className="bg-cover bg-center bg-no-repeat"
+        <div className="relative bg-cover bg-center bg-no-repeat"
             style={{
                 backgroundImage: `url(${bg})`,
                 backgroundAttachment: 'fixed',
             }}
         >
-            <div className="container mx-auto px-4 pt-12 pb-20 text-black">
+            {/* Background Overlay for Dark Mode */}
+            <div className="absolute inset-0 light:bg-white light:bg-opacity-50 dark:bg-black dark:bg-opacity-70"></div>
+
+            <div className="relative container mx-auto px-4 pt-12 pb-20 text-black dark:text-white">
                 {/* Title */}
                 <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-5">
                     About Us

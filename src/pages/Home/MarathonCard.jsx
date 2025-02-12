@@ -21,7 +21,7 @@ const MarathonCard = ({ marathon }) => {
             }}
         >
             {/* Overlay for dark gradient effect */}
-            <div className="bg-black bg-opacity-70 h-full w-full rounded-xl p-6 flex flex-col justify-between">
+            <div className="bg-black bg-opacity-65 h-full w-full rounded-xl p-6 flex flex-col justify-between">
                 {/* Card Content */}
                 <div className="space-y-2 flex-grow">
                     <h2 className="text-xl md:text-2xl font-semibold text-white">
@@ -49,7 +49,7 @@ const MarathonCard = ({ marathon }) => {
                 <div className="mt-5">
                     <Link
                         to={`/marathonDetails/${_id}`}
-                        className="btn text-base text-white bg-purple-700 hover:bg-purple-800 border-none font-medium w-full transition-all duration-500"
+                        className="btn text-base text-white bg-purple-800 hover:bg-purple-900 border-none font-medium w-full transition-all duration-500"
                         // style={{
                         //     background: "linear-gradient(to right, #000066 0%, #660066 100%)",
                         // }}

@@ -14,7 +14,7 @@ const Dashboard = () => {
                             <NavLink
                                 to="addMarathons"
                                 className={({ isActive }) =>
-                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-500 text-white' : ' hover:bg-purple-100'
+                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-700 text-white' : ' hover:bg-purple-100'
                                     }`
                                 }
                             >
@@ -25,7 +25,7 @@ const Dashboard = () => {
                             <NavLink
                                 to="myMarathonList"
                                 className={({ isActive }) =>
-                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-500 text-white' : 'hover:bg-purple-100'
+                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-700 text-white' : 'hover:bg-purple-100'
                                     }`
                                 }
                             >
@@ -36,7 +36,7 @@ const Dashboard = () => {
                             <NavLink
                                 to="myApplyList"
                                 className={({ isActive }) =>
-                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-500 text-white' : 'hover:bg-purple-100'
+                                    `block px-4 py-2 rounded ${isActive ? 'bg-purple-700 text-white' : 'hover:bg-purple-100'
                                     }`
                                 }
                             >

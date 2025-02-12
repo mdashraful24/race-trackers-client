@@ -100,13 +100,13 @@ const MarathonPage = () => {
             <div className="flex justify-end mb-5">
                 <button
                     onClick={() => setSortOrder('newest')}
-                    className={`transition-all duration-300 py-2 px-6 rounded-l-xl border-2 ${sortOrder === 'newest' ? 'bg-purple-700 text-white border-purple-700' : 'bg-white text-purple-700 border-purple-300 hover:border-purple-500'} font-semibold`}
+                    className={`transition-all duration-300 py-2 px-6 rounded-l-xl border-2 ${sortOrder === 'newest' ? 'bg-purple-800 text-white border-purple-900' : 'bg-white text-purple-800 border-purple-300 hover:border-purple-600'} font-semibold`}
                 >
                     Newest
                 </button>
                 <button
                     onClick={() => setSortOrder('oldest')}
-                    className={`transition-all duration-300 py-2 px-6 rounded-r-xl border-2 ${sortOrder === 'oldest' ? 'bg-purple-700 text-white border-purple-700' : 'bg-white text-purple-700 border-purple-300 hover:border-purple-500'} font-semibold`}
+                    className={`transition-all duration-300 py-2 px-6 rounded-r-xl border-2 ${sortOrder === 'oldest' ? 'bg-purple-800 text-white border-purple-900' : 'bg-white text-purple-700 border-purple-300 hover:border-purple-500'} font-semibold`}
                 >
                     Oldest
                 </button>
@@ -128,7 +128,7 @@ const MarathonPage = () => {
             <div className="flex justify-center mt-12 font-semibold">
                 <button
                     onClick={handlePreviousPage}
-                    className={`btn  font-semibold ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`btn dark:border-white font-semibold ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={currentPage === 1}
                 >
                     Previous
@@ -136,7 +136,7 @@ const MarathonPage = () => {
                 <span className="mx-4 flex items-center">{`Page ${currentPage} of ${totalPages}`}</span>
                 <button
                     onClick={handleNextPage}
-                    className={`btn font-semibold ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`btn dark:border-white font-semibold ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
                     disabled={currentPage === totalPages}
                 >
                     Next

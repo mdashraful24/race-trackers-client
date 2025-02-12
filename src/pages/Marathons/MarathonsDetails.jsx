@@ -117,7 +117,7 @@ const MarathonsDetails = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             {/* Location: */}
                             <div className="flex items-center gap-1.5 md:gap-2">
-                                <p className="text-blue-500 text-xl"><IoLocationSharp /></p>
+                                <p className="text-purple-600 text-xl"><IoLocationSharp /></p>
                                 <p className="md:text-lg font-semibold">Location:</p>
                                 <p>{location}</p>
                             </div>
@@ -176,7 +176,7 @@ const MarathonsDetails = () => {
                         {/* Register Button */}
                         <div className="mt-10 text-center">
                             {timeLeft !== "Coming Soon" && !registrationClosed && (
-                                <Link to={`/registrationForm/${id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-700 hover:bg-purple-800 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
+                                <Link to={`/registrationForm/${id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-800 hover:bg-purple-900 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
                                     {isRegistrationOpen ? "Register Now" : "Registration Closed"}
                                 </Link>
                             )}

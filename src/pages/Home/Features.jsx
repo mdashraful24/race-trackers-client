@@ -28,7 +28,7 @@ const Features = () => {
             {/* CTA Button */}
             <button
                 onClick={() => navigate("/services")}
-                className="mt-6 px-6 py-3 text-lg font-medium bg-purple-700 text-white rounded-lg shadow-md hover:bg-purple-800 transition duration-300"
+                className="mt-6 px-6 py-3 text-lg font-medium bg-purple-800 text-white rounded-lg shadow-md hover:bg-purple-900 transition duration-300"
             >
                 Explore Services
             </button>

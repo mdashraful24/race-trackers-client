@@ -13,7 +13,7 @@ const MarathonPageCard = ({ marathon }) => {
             <div className="p-4 flex flex-col">
                 <h3 className="text-xl font-semibold mb-2">{marathon.title}</h3>
                 <div className="flex items-center gap-1 mb-2 font-semibold">
-                    <span className="text-blue-600 text-lg">
+                    <span className="text-purple-600 text-lg">
                         <IoLocationSharp />
                     </span>
                     <p>{marathon.location}</p>
@@ -24,7 +24,7 @@ const MarathonPageCard = ({ marathon }) => {
                 </p>
                 <Link
                     to={`/marathonDetails/${marathon._id}`}
-                    className="btn mt-3 ml-auto shadow-md transition-colors duration-300 text-black group-hover:bg-purple-700 group-hover:text-white"
+                    className="btn mt-3 ml-auto dark:text-gray-400 shadow-md transition-colors duration-300 text-black group-hover:bg-purple-800 group-hover:text-white"
                 >
                     See Details
                 </Link>
