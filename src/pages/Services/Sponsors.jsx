@@ -23,11 +23,11 @@ const Sponsors = () => {
 
     return (
         <div className="container mx-auto px-4 mt-10">
-            <h2 className="text-base text-center font-bold mb-3">
+            {/* <h2 className="text-base text-center font-bold mb-3">
                 Our Features
-            </h2>
+            </h2> */}
             <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">
-                Services
+                Services & Sponsors
             </h2>
             <div className="mb-10 h-1 w-36 mx-auto bg-[#591a6a]"></div>
 

@@ -102,8 +102,8 @@ const Navbar = () => {
                             onClick={scrollToHome}
                             className="md:text-2xl font-bold flex items-center gap-2"
                         >
-                            <img src={siteLogo} alt="siteLogo" className="hidden lg:block w-10 md:w-12" />
-                            <p className="md:text-2xl lg:text-3xl cursor-pointer">RaceTrackers</p>
+                            <img src={siteLogo} alt="siteLogo" className="w-10 md:w-12" />
+                            <p className="hidden md:block md:text-xl lg:text-3xl cursor-pointer">RaceTrackers</p>
                         </button>
                     </div>
                 </div>
@@ -140,13 +140,13 @@ const Navbar = () => {
                         <div className="flex gap-2">
                             <Link
                                 to="/login"
-                                className="btn btn-sm bg-blue-500 text-white"
+                                className="btn btn-sm bg-blue-500 text-white hover:text-black"
                             >
                                 Login
                             </Link>
                             <Link
                                 to="/register"
-                                className="btn btn-sm bg-green-500 text-white"
+                                    className="btn btn-sm mr-2 bg-green-500 text-white hover:text-black"
                             >
                                 Register
                             </Link>

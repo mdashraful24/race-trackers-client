@@ -103,19 +103,28 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-2 -mb-2">
-                            <button className="btn text-white font-medium bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md transition-all duration-200 border-none">Login</button>
+                            <button className="btn text-white font-medium bg-blue-500 hover:bg-blue-500">Login</button>
                         </div>
+                        {/* <div className="form-control mt-2 -mb-2">
+                            <button className="btn text-white font-medium bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md transition-all duration-200 border-none">Login</button>
+                        </div> */}
                     </form>
                     <p className='text-center text-sm'>
                         Don't Have An Account? <Link to='/register' className='text-red-500 font-semibold hover:underline'>Register</Link>
                     </p>
                     <div className="text-center w-10/12 mx-auto mt-5">
                         <button onClick={handleGoogleSignInClick}
-                            className="btn w-full text-white font-medium bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md transition-all duration-200 border-none"
+                            className="btn btn-outline w-full font-medium border-blue-600 hover:bg-white hover:text-black"
                         >
                             <FcGoogle />
                             Sign in with Google
                         </button>
+                        {/* <button onClick={handleGoogleSignInClick}
+                            className="btn w-full text-white font-medium bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md transition-all duration-200 border-none"
+                        >
+                            <FcGoogle />
+                            Sign in with Google
+                        </button> */}
                     </div>
                 </div>
             </div>

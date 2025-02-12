@@ -224,7 +224,7 @@ const Banner = () => {
                 {/* Slide 1 */}
                 <div className="relative">
                     <img
-                        src={image1}
+                        src={image3}
                         alt="Crowdfunding"
                         className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
@@ -260,7 +260,7 @@ const Banner = () => {
                 {/* Slide 3 */}
                 <div className="relative">
                     <img
-                        src={image3}
+                        src={image1}
                         alt="Community"
                         className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />

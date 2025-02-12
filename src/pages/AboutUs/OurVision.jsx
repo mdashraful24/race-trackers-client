@@ -42,7 +42,7 @@ const OurVision = () => {
             <div className="my-16">
                 <div className="flex justify-center">
                     <button
-                        className="bg-purple-800 text-white font-semibold py-2 px-6 rounded-lg hover:bg-purple-900 transition duration-300"
+                        className="bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-6 rounded-lg transition duration-300"
                         onClick={handleButtonClick}
                     >
                         Discover Our Programs

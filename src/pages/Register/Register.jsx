@@ -130,10 +130,15 @@ const Register = () => {
                         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn text-white font-medium bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 shadow-md transition-all duration-200 border-none">
+                        <button className="btn text-white font-medium bg-green-500 hover:bg-green-500">
                             Register
                         </button>
                     </div>
+                    {/* <div className="form-control mt-6">
+                        <button className="btn text-white font-medium bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 shadow-md transition-all duration-200 border-none">
+                            Register
+                        </button>
+                    </div> */}
                 </form>
                 <p className="text-center text-sm">
                     Already Have An Account? <Link to="/login" className="text-red-500 font-semibold hover:underline">Login</Link>
