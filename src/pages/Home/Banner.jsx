@@ -41,7 +41,7 @@ const Banner = () => {
                 <div className="relative">
                     <img
                         src={image3}
-                        alt="Crowdfunding"
+                        alt="marathon-race"
                         className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
@@ -59,7 +59,7 @@ const Banner = () => {
                 <div className="relative">
                     <img
                         src={image2}
-                        alt="Community"
+                        alt="marathon-race"
                         className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
@@ -77,7 +77,7 @@ const Banner = () => {
                 <div className="relative">
                     <img
                         src={image1}
-                        alt="Community"
+                        alt="marathon-race"
                         className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-55 flex items-center justify-center text-center px-4">
