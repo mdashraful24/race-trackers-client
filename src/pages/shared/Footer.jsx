@@ -37,7 +37,8 @@ const Footer = () => {
                     <a className="link link-hover text-base">Cookie policy</a>
                 </nav>
             </footer>
-            <p className="text-center text-gray-400 pt-10 pb-5">&copy; {new Date().getFullYear()} RaceTrackers. All rights reserved.</p>
+            <p className="text-center text-gray-400 pt-10">&copy; {new Date().getFullYear()} RaceTrackers. All rights reserved.</p>
+            <p className="text-center text-gray-400 pb-3">Designed, Developed and Maintained by Ashraful Islam.</p>
         </div>
     );
 };
