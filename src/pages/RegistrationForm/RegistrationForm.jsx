@@ -65,7 +65,7 @@ const RegistrationForm = () => {
             marathonStartDate: marathon.marathonStartDate,
         };
 
-        fetch("https://mw-assignments11-server.vercel.app/registrations", {
+        fetch("http://localhost:5000/registrations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -244,7 +244,7 @@ export default RegistrationForm;
 //         };
 
 //         // Send registration data to the server
-//         fetch("https://mw-assignments11-server.vercel.app/registrations", {
+//         fetch("http://localhost:5000/registrations", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",

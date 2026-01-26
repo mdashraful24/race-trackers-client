@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'https://mw-assignments11-server.vercel.app'
+    baseURL: 'http://localhost:5000'  //https://race-trackers-server.vercel.app
 })
 const useAxiosPublic = () => {
     return axiosPublic;

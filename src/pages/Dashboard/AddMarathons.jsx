@@ -75,7 +75,7 @@ const AddMarathons = () => {
         }
 
         // Post to Server
-        // fetch("https://mw-assignments11-server.vercel.app/addMarathons", {
+        // fetch("http://localhost:5000/addMarathons", {
         //     method: "POST",
         //     headers: {
         //         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const AddMarathons = () => {
         //         }
         //     });
 
-        // fetch("https://mw-assignments11-server.vercel.app/addMarathons", {
+        // fetch("http://localhost:5000/addMarathons", {
         //     method: "POST",
         //     headers: {
         //         "Content-Type": "application/json",
@@ -118,7 +118,7 @@ const AddMarathons = () => {
         //     });
 
         axiosSecure
-            .post("https://mw-assignments11-server.vercel.app/addMarathons", newMarathon, {
+            .post("http://localhost:5000/addMarathons", newMarathon, {
                 headers: {
                     "Content-Type": "application/json",
                 },

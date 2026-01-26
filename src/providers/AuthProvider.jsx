@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
                     const user = { email: currentUser.email };
 
                     // Request JWT token from the backend
-                    const res = await axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
+                    const res = await axios.post('http://localhost:5000/jwt', user, {
                         withCredentials: true,
                     });
 
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
                     setUser(currentUser);
                 } else {
                     // Logout case: clear token and user state
-                    await axios.post('https://mw-assignments11-server.vercel.app/logout', {}, {
+                    await axios.post('http://localhost:5000/logout', {}, {
                         withCredentials: true,
                     });
                     setUser(null);
@@ -88,7 +88,7 @@ const AuthProvider = ({ children }) => {
     //         if (currentUser?.email) {
     //             const user = { email: currentUser.email };
 
-    //             axios.post('https://mw-assignments11-server.vercel.app/jwt', user, {
+    //             axios.post('http://localhost:5000/jwt', user, {
     //                 withCredentials: true
     //             })
     //                 .then(res => {
@@ -97,7 +97,7 @@ const AuthProvider = ({ children }) => {
     //                 })
     //         }
     //         else {
-    //             axios.post('https://mw-assignments11-server.vercel.app/logout', {}, {
+    //             axios.post('http://localhost:5000/logout', {}, {
     //                 withCredentials: true
     //             })
     //                 .then(res => {

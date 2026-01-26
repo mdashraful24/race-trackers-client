@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             //     path: "marathonDetails/:id",
             //     element: <PrivateRoute><MarathonsDetails></MarathonsDetails></PrivateRoute>,
             //     loader: ({ params }) =>
-            //         fetch(`https://mw-assignments11-server.vercel.app/allMarathons/${params.id}`, {
+            //         fetch(`http://localhost:5000/allMarathons/${params.id}`, {
             //             method: 'GET',
             //             credentials: 'include',
             //         })
