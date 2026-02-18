@@ -39,7 +39,7 @@ const MyApplyList = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/myApplyList/${_id}`, {
+                    fetch(`${import.meta.env.VITE_API_URL}/myApplyList/${_id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())
@@ -72,7 +72,7 @@ const MyApplyList = () => {
             additionalInfo: event.target.additionalInfo.value,
         };
 
-        fetch(`http://localhost:5000/myApplyList/${selectedRace._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/myApplyList/${selectedRace._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

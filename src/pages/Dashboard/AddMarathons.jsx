@@ -118,7 +118,7 @@ const AddMarathons = () => {
         //     });
 
         axiosSecure
-            .post("http://localhost:5000/addMarathons", newMarathon, {
+            .post(`${import.meta.env.VITE_API_URL}/addMarathons`, newMarathon, {
                 headers: {
                     "Content-Type": "application/json",
                 },

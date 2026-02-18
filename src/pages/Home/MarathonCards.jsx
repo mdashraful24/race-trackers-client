@@ -8,7 +8,7 @@ const MarathonCards = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/marathons')
+        fetch(`${import.meta.env.VITE_API_URL}/marathons`)
             .then(res => res.json())
             .then(data => {
                 setMarathons(data);

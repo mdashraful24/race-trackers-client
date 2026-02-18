@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
                     const user = { email: currentUser.email };
 
                     // Request JWT token from the backend
-                    const res = await axios.post('http://localhost:5000/jwt', user, {
+                    const res = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, {
                         withCredentials: true,
                     });
 
@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
                     setUser(currentUser);
                 } else {
                     // Logout case: clear token and user state
-                    await axios.post('http://localhost:5000/logout', {}, {
+                    await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, {
                         withCredentials: true,
                     });
                     setUser(null);

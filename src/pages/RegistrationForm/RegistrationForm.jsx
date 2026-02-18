@@ -65,7 +65,7 @@ const RegistrationForm = () => {
             marathonStartDate: marathon.marathonStartDate,
         };
 
-        fetch("http://localhost:5000/registrations", {
+        fetch(`${import.meta.env.VITE_API_URL}/registrations`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

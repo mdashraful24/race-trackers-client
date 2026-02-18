@@ -47,7 +47,7 @@ const MyMarathonList = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/marathonPage/${_id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/marathonPage/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
@@ -99,7 +99,7 @@ const MyMarathonList = () => {
     // Handle Submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:5000/marathonPage/${currentCampaign._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/marathonPage/${currentCampaign._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
