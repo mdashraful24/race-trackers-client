@@ -87,106 +87,108 @@ const MarathonsDetails = () => {
 
     const isRegistrationOpen = new Date() >= new Date(startRegistrationDate) && new Date() <= new Date(endRegistrationDate);
 
-    const circleStyleDay = { path: { stroke: '#FF6347' }, text: { fill: '#FF6347', fontSize: '16px' } };
-    const circleStyleHour = { path: { stroke: '#4682B4' }, text: { fill: '#4682B4', fontSize: '16px' } };
-    const circleStyleMinute = { path: { stroke: '#32CD32' }, text: { fill: '#32CD32', fontSize: '16px' } };
+    const circleStyleDay = { path: { stroke: '#7C3AED' }, text: { fill: '#7C3AED', fontSize: '16px', fontWeight: 600 } };
+    const circleStyleHour = { path: { stroke: '#2563EB' }, text: { fill: '#2563EB', fontSize: '16px', fontWeight: 600 } };
+    const circleStyleMinute = { path: { stroke: '#16A34A' }, text: { fill: '#16A34A', fontSize: '16px', fontWeight: 600 } };
+    const circleStyleSecond = { path: { stroke: '#DC2626' }, text: { fill: '#DC2626', fontSize: '16px', fontWeight: 600 } };
 
     return (
-        <div className="container mx-auto mt-8 md:mt-10 mb-8 md:mb-16 px-4">
-            <Helmet>
-                <title>Marathon Details | RaceTrackers</title>
-            </Helmet>
+        <div className="px-4">
+            <div className="container mx-auto mt-8 md:mt-10 mb-8 md:mb-16">
+                <Helmet>
+                    <title>Marathon Details | RaceTrackers</title>
+                </Helmet>
 
-            <h2 className="text-2xl md:text-4xl font-bold text-center mb-5">Marathon Details</h2>
-            <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
+                <h2 className="text-2xl md:text-4xl font-bold text-center mb-5">Marathon Details</h2>
+                <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
 
-            {/* Header Section */}
-            <div className="shadow-lg rounded-lg overflow-hidden">
+                {/* Header Section */}
+                <div className="shadow-lg rounded-lg overflow-hidden">
+                    <div className="flex flex-col lg:flex-row justify-center gap-8">
+                        <div>
+                            <img src={marathonImage} alt={title} className="w-full h-auto lg:w-[830px] lg:h-[460px] rounded-xl" />
+                        </div>
 
-                <div className="flex flex-col lg:flex-row justify-center lg:gap-10">
-                    <div>
                         <div className="p-4 lg:p-6">
+                            <h1 className="text-xl md:text-3xl font-bold text-center text-purple-800 mb-4">{title}</h1>
 
-                            <img src={marathonImage} alt={title} className="w-full h-auto lg:w-[900px] lg:h-[460px] rounded-xl" />
+                            {/* Description */}
+                            <p className="mb-6 text-justify"><span className=" md:text-lg font-semibold">Description:</span> {description}</p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                {/* Location: */}
+                                <div className="flex items-center gap-1.5 md:gap-2">
+                                    <p className="text-purple-600 text-xl"><IoLocationSharp /></p>
+                                    <p className="md:text-lg font-semibold">Location:</p>
+                                    <p>{location}</p>
+                                </div>
+
+                                {/* Running Distance: */}
+                                <div className="flex items-center gap-2">
+                                    <p className="md:text-lg font-semibold">🏅 Running Distance:</p>
+                                    <p>{runningDistance}</p>
+                                </div>
+
+                                {/* Start Registration: */}
+                                <div className="flex items-center gap-2">
+                                    <p className="md:text-lg font-semibold">📅 Start Registration:</p>
+                                    <p>{new Date(startRegistrationDate).toLocaleDateString()}</p>
+                                </div>
+
+                                {/* End Registration: */}
+                                <div className="flex items-center gap-2">
+                                    <p className="md:text-lg font-semibold">📅 End Registration:</p>
+                                    <p>{new Date(endRegistrationDate).toLocaleDateString()}</p>
+                                </div>
+
+                                {/* Marathon Start Date: */}
+                                <div className="flex items-center gap-2">
+                                    <p className="md:text-lg font-semibold">🏃 Marathon Start Date:</p>
+                                    <p>{new Date(marathonStartDate).toLocaleDateString()}</p>
+                                </div>
+
+                                {/* Total Registration Count: */}
+                                <div className="flex items-center gap-2.5">
+                                    <FaUsers className="text-blue-500" />
+                                    <p className="md:text-lg font-semibold">Total Registration Count:</p>
+                                    <p>{totalRegistrationCount}</p>
+                                </div>
+                            </div>
+
+                            {/* Countdown Timer */}
+                            <div className="mt-5">{timeLeft === "Coming Soon" ? (
+                                <p className="md:text-lg font-semibold">⏳ Registration: <span className="text-blue-600 md:text-lg font-semibold">{timeLeft}</span></p>
+                            ) : registrationClosed ? (
+                                <p className="md:text-lg font-semibold">🚫 Registration: <span className="text-red-500 md:text-lg font-semibold">{timeLeft}</span></p>
+                            ) : (
+                                <div className="flex justify-center items-center gap-3 md:gap-10">
+                                    <div className="flex justify-center items-center w-24 h-24">
+                                        <CircularProgressbar value={timeParts.days} maxValue={365} text={`${timeParts.days} days`} styles={circleStyleDay} />
+                                    </div>
+                                    <div className="flex justify-center items-center w-24 h-24">
+                                        <CircularProgressbar value={timeParts.hours} maxValue={24} text={`${timeParts.hours} hours`} styles={circleStyleHour} />
+                                    </div>
+                                    <div className="flex justify-center items-center w-24 h-24">
+                                        <CircularProgressbar value={timeParts.minutes} maxValue={60} text={`${timeParts.minutes} min`} styles={circleStyleMinute} />
+                                    </div>
+                                    <div className="flex justify-center items-center w-24 h-24">
+                                        <CircularProgressbar value={timeParts.seconds} maxValue={60} text={`${timeParts.seconds} sec`} styles={circleStyleSecond} />
+                                    </div>
+                                </div>
+                            )}</div>
+
+                            {/* Register Button */}
+                            <div className="mt-10 text-center">
+                                {timeLeft !== "Coming Soon" && !registrationClosed && (
+                                    <Link to={`/registrationForm/${id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-800 hover:bg-purple-900 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
+                                        {isRegistrationOpen ? "Register Now" : "Registration Closed"}
+                                    </Link>
+                                )}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="p-4 lg:p-6">
-                        <h1 className="text-xl md:text-3xl font-bold text-center text-purple-800 mb-4">{title}</h1>
-
-                        {/* Description */}
-                        <p className="mb-6 text-justify"><span className=" md:text-lg font-semibold">Description:</span> {description}</p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            {/* Location: */}
-                            <div className="flex items-center gap-1.5 md:gap-2">
-                                <p className="text-purple-600 text-xl"><IoLocationSharp /></p>
-                                <p className="md:text-lg font-semibold">Location:</p>
-                                <p>{location}</p>
-                            </div>
-
-                            {/* Running Distance: */}
-                            <div className="flex items-center gap-2">
-                                <p className="md:text-lg font-semibold">🏅 Running Distance:</p>
-                                <p>{runningDistance}</p>
-                            </div>
-
-                            {/* Start Registration: */}
-                            <div className="flex items-center gap-2">
-                                <p className="md:text-lg font-semibold">📅 Start Registration:</p>
-                                <p>{new Date(startRegistrationDate).toLocaleDateString()}</p>
-                            </div>
-
-                            {/* End Registration: */}
-                            <div className="flex items-center gap-2">
-                                <p className="md:text-lg font-semibold">📅 End Registration:</p>
-                                <p>{new Date(endRegistrationDate).toLocaleDateString()}</p>
-                            </div>
-
-                            {/* Marathon Start Date: */}
-                            <div className="flex items-center gap-2">
-                                <p className="md:text-lg font-semibold">🏃 Marathon Start Date:</p>
-                                <p>{new Date(marathonStartDate).toLocaleDateString()}</p>
-                            </div>
-
-                            {/* Total Registration Count: */}
-                            <div className="flex items-center gap-2.5">
-                                <FaUsers className="text-blue-500" />
-                                <p className="md:text-lg font-semibold">Total Registration Count:</p>
-                                <p>{totalRegistrationCount}</p>
-                            </div>
-                        </div>
-
-                        {/* Countdown Timer */}
-                        <div className="mt-5">{timeLeft === "Coming Soon" ? (
-                            <p className="md:text-lg font-semibold">⏳ Registration: <span className="text-blue-600 md:text-lg font-semibold">{timeLeft}</span></p>
-                        ) : registrationClosed ? (
-                            <p className="md:text-lg font-semibold">🚫 Registration: <span className="text-red-500 md:text-lg font-semibold">{timeLeft}</span></p>
-                        ) : (
-                            <div className="flex justify-center items-center gap-10">
-                                <div className="flex justify-center items-center w-24 h-24">
-                                    <CircularProgressbar value={timeParts.days} maxValue={365} text={`${timeParts.days} days`} styles={circleStyleDay} />
-                                </div>
-                                <div className="flex justify-center items-center w-24 h-24">
-                                    <CircularProgressbar value={timeParts.hours} maxValue={24} text={`${timeParts.hours} hours`} styles={circleStyleHour} />
-                                </div>
-                                <div className="flex justify-center items-center w-24 h-24">
-                                    <CircularProgressbar value={timeParts.minutes} maxValue={60} text={`${timeParts.minutes} min`} styles={circleStyleMinute} />
-                                </div>
-                            </div>
-                        )}</div>
-
-                        {/* Register Button */}
-                        <div className="mt-10 text-center">
-                            {timeLeft !== "Coming Soon" && !registrationClosed && (
-                                <Link to={`/registrationForm/${id}`} disabled={!isRegistrationOpen} className={`btn bg-purple-800 hover:bg-purple-900 text-white text-base w-full ${isRegistrationOpen ? "" : "btn-disabled"}`}>
-                                    {isRegistrationOpen ? "Register Now" : "Registration Closed"}
-                                </Link>
-                            )}
-                        </div>
-                    </div>
                 </div>
-
             </div>
         </div>
     );

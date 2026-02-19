@@ -66,7 +66,7 @@ const Navbar = () => {
 
     return (
         <div className="sticky top-0 shadow-lg z-50 dark:text-white bg-gradient-to-r from-purple-700 to-purple-800">
-            <div className="navbar container mx-auto px-4">
+            <div className="navbar container mx-auto px-4 py-0">
                 {/* Left: Logo */}
                 <div className="navbar-start md:w-[30%]">
                     <div className="dropdown">

@@ -39,7 +39,6 @@ const ExtraSection = () => {
                 setExpandedIndex(null);
             }
         };
-
         document.addEventListener("click", handleClickOutside);
         return () => {
             document.removeEventListener("click", handleClickOutside);
@@ -47,7 +46,7 @@ const ExtraSection = () => {
     }, []);
 
     return (
-        <div className="container mx-auto mt-14 mb-8 md:mt-24 px-4" ref={faqRef}>
+        <div className="container mx-auto mt-14 mb-8 md:mt-24 px-4">
             <div className="mb-12">
                 <h2 className="text-base font-bold text-center mb-3">
                     How it works
@@ -56,7 +55,7 @@ const ExtraSection = () => {
                     Frequently Asked Questions
                 </h2>
                 <div className="mb-8 h-1 w-36 bg-[#591a6a] mx-auto"></div>
-                <div className="space-y-4">
+                <div className="space-y-4" ref={faqRef}>
                     {faqData.map((faq, index) => (
                         <div key={index} className="p-4 rounded-lg shadow-md hover:shadow-lg">
                             <button
